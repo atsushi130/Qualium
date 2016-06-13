@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-class QualiaCell: UIView {
+class QualiaCell: UICollectionViewCell {
     
 }
