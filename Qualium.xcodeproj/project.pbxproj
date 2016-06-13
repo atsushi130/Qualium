@@ -14,6 +14,7 @@
 		0D3DFCCF1D0EDEEE009F0CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D3DFCCD1D0EDEEE009F0CB9 /* LaunchScreen.storyboard */; };
 		0D3DFCDA1D0EDEEE009F0CB9 /* QualiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCD91D0EDEEE009F0CB9 /* QualiumTests.swift */; };
 		0D3DFCE51D0EDEEE009F0CB9 /* QualiumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCE41D0EDEEE009F0CB9 /* QualiumUITests.swift */; };
+		0D3DFCF41D0EE013009F0CB9 /* Qualia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF31D0EE013009F0CB9 /* Qualia.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		0D3DFCE01D0EDEEE009F0CB9 /* QualiumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QualiumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D3DFCE41D0EDEEE009F0CB9 /* QualiumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualiumUITests.swift; sourceTree = "<group>"; };
 		0D3DFCE61D0EDEEE009F0CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D3DFCF31D0EE013009F0CB9 /* Qualia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Qualia.swift; path = Qualium/Qualia.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		0D3DFCC31D0EDEEE009F0CB9 /* Qualium */ = {
 			isa = PBXGroup;
 			children = (
+				0D3DFCF21D0EDEF9009F0CB9 /* Qualium */,
 				0D3DFCC41D0EDEEE009F0CB9 /* AppDelegate.swift */,
 				0D3DFCC61D0EDEEE009F0CB9 /* ViewController.swift */,
 				0D3DFCC81D0EDEEE009F0CB9 /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				0D3DFCE61D0EDEEE009F0CB9 /* Info.plist */,
 			);
 			path = QualiumUITests;
+			sourceTree = "<group>";
+		};
+		0D3DFCF21D0EDEF9009F0CB9 /* Qualium */ = {
+			isa = PBXGroup;
+			children = (
+				0D3DFCF31D0EE013009F0CB9 /* Qualia.swift */,
+			);
+			name = Qualium;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3DFCF41D0EE013009F0CB9 /* Qualia.swift in Sources */,
 				0D3DFCC71D0EDEEE009F0CB9 /* ViewController.swift in Sources */,
 				0D3DFCC51D0EDEEE009F0CB9 /* AppDelegate.swift in Sources */,
 			);
