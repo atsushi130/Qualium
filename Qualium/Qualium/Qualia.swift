@@ -21,14 +21,14 @@ enum QualiaTypes {
     case Image
 }
 
-protocol Qualia {
+protocol QualiaObject {
     var vector: QualiaVactor { get set }
     var type: QualiaTypes { get set }
     var ID: String! { get set }
-    init(vector: QualiaVactor)
+    init(vector: QualiaVactor, ID: String)
 }
 
-protocol QualiaMessage: Qualia {
+protocol QualiaMessage: QualiaObject {
     var message: String! { get set }
 }
 
@@ -39,18 +39,7 @@ extension QualiaMessage {
     }
 }
 
-class MyQualia: NSObject, QualiaMessage {
-    var vector: QualiaVactor = .Me
-    var ID: String!
-    var message: String!
-    
-    required init(vector: QualiaVactor) {
-        super.init()
-    }
-    
-}
-
-protocol QualiaMovie: Qualia {
+protocol QualiaMovie: QualiaObject {
     var movie: NSData { get set }
 }
 
@@ -61,7 +50,7 @@ extension QualiaMovie {
     }
 }
 
-protocol QualiaImage: Qualia {
+protocol QualiaImage: QualiaObject {
     var image: UIImage { get set }
 }
 
@@ -84,7 +73,7 @@ class Choice: NSObject {
     }
 }
 
-protocol QualiaQuestion: Qualia {
+protocol QualiaQuestion: QualiaObject {
     var choices: [Choice] { get set }
 }
 
@@ -93,4 +82,22 @@ extension QualiaQuestion {
         get { return .Question }
         set {}
     }
+}
+
+class Qualia: NSObject, QualiaObject {
+    
+    var vector: QualiaVactor = .Me
+    var ID: String!          = ""
+    var type: QualiaTypes = .Message
+    
+    override init() {
+        super.init()
+    }
+    
+    required init(vector: QualiaVactor, ID: String) {
+        super.init()
+        self.vector = vector
+        self.ID     = ID
+    }
+    
 }
