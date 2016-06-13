@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D3DFCC51D0EDEEE009F0CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCC41D0EDEEE009F0CB9 /* AppDelegate.swift */; };
+		0D3DFCC71D0EDEEE009F0CB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCC61D0EDEEE009F0CB9 /* ViewController.swift */; };
+		0D3DFCCA1D0EDEEE009F0CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D3DFCC81D0EDEEE009F0CB9 /* Main.storyboard */; };
+		0D3DFCCC1D0EDEEE009F0CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D3DFCCB1D0EDEEE009F0CB9 /* Assets.xcassets */; };
+		0D3DFCCF1D0EDEEE009F0CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D3DFCCD1D0EDEEE009F0CB9 /* LaunchScreen.storyboard */; };
+		0D3DFCDA1D0EDEEE009F0CB9 /* QualiumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCD91D0EDEEE009F0CB9 /* QualiumTests.swift */; };
+		0D3DFCE51D0EDEEE009F0CB9 /* QualiumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCE41D0EDEEE009F0CB9 /* QualiumUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D3DFCD61D0EDEEE009F0CB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D3DFCB91D0EDEED009F0CB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D3DFCC01D0EDEED009F0CB9;
+			remoteInfo = Qualium;
+		};
+		0D3DFCE11D0EDEEE009F0CB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D3DFCB91D0EDEED009F0CB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D3DFCC01D0EDEED009F0CB9;
+			remoteInfo = Qualium;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D3DFCC11D0EDEED009F0CB9 /* Qualium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qualium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D3DFCC41D0EDEEE009F0CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0D3DFCC61D0EDEEE009F0CB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0D3DFCC91D0EDEEE009F0CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0D3DFCCB1D0EDEEE009F0CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D3DFCCE1D0EDEEE009F0CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0D3DFCD01D0EDEEE009F0CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D3DFCD51D0EDEEE009F0CB9 /* QualiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QualiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D3DFCD91D0EDEEE009F0CB9 /* QualiumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualiumTests.swift; sourceTree = "<group>"; };
+		0D3DFCDB1D0EDEEE009F0CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D3DFCE01D0EDEEE009F0CB9 /* QualiumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QualiumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D3DFCE41D0EDEEE009F0CB9 /* QualiumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualiumUITests.swift; sourceTree = "<group>"; };
+		0D3DFCE61D0EDEEE009F0CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D3DFCBE1D0EDEED009F0CB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D3DFCD21D0EDEEE009F0CB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D3DFCDD1D0EDEEE009F0CB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D3DFCB81D0EDEED009F0CB9 = {
+			isa = PBXGroup;
+			children = (
+				0D3DFCC31D0EDEEE009F0CB9 /* Qualium */,
+				0D3DFCD81D0EDEEE009F0CB9 /* QualiumTests */,
+				0D3DFCE31D0EDEEE009F0CB9 /* QualiumUITests */,
+				0D3DFCC21D0EDEED009F0CB9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0D3DFCC21D0EDEED009F0CB9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D3DFCC11D0EDEED009F0CB9 /* Qualium.app */,
+				0D3DFCD51D0EDEEE009F0CB9 /* QualiumTests.xctest */,
+				0D3DFCE01D0EDEEE009F0CB9 /* QualiumUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D3DFCC31D0EDEEE009F0CB9 /* Qualium */ = {
+			isa = PBXGroup;
+			children = (
+				0D3DFCC41D0EDEEE009F0CB9 /* AppDelegate.swift */,
+				0D3DFCC61D0EDEEE009F0CB9 /* ViewController.swift */,
+				0D3DFCC81D0EDEEE009F0CB9 /* Main.storyboard */,
+				0D3DFCCB1D0EDEEE009F0CB9 /* Assets.xcassets */,
+				0D3DFCCD1D0EDEEE009F0CB9 /* LaunchScreen.storyboard */,
+				0D3DFCD01D0EDEEE009F0CB9 /* Info.plist */,
+			);
+			path = Qualium;
+			sourceTree = "<group>";
+		};
+		0D3DFCD81D0EDEEE009F0CB9 /* QualiumTests */ = {
+			isa = PBXGroup;
+			children = (
+				0D3DFCD91D0EDEEE009F0CB9 /* QualiumTests.swift */,
+				0D3DFCDB1D0EDEEE009F0CB9 /* Info.plist */,
+			);
+			path = QualiumTests;
+			sourceTree = "<group>";
+		};
+		0D3DFCE31D0EDEEE009F0CB9 /* QualiumUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0D3DFCE41D0EDEEE009F0CB9 /* QualiumUITests.swift */,
+				0D3DFCE61D0EDEEE009F0CB9 /* Info.plist */,
+			);
+			path = QualiumUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D3DFCC01D0EDEED009F0CB9 /* Qualium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D3DFCE91D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "Qualium" */;
+			buildPhases = (
+				0D3DFCBD1D0EDEED009F0CB9 /* Sources */,
+				0D3DFCBE1D0EDEED009F0CB9 /* Frameworks */,
+				0D3DFCBF1D0EDEED009F0CB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Qualium;
+			productName = Qualium;
+			productReference = 0D3DFCC11D0EDEED009F0CB9 /* Qualium.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0D3DFCD41D0EDEEE009F0CB9 /* QualiumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D3DFCEC1D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "QualiumTests" */;
+			buildPhases = (
+				0D3DFCD11D0EDEEE009F0CB9 /* Sources */,
+				0D3DFCD21D0EDEEE009F0CB9 /* Frameworks */,
+				0D3DFCD31D0EDEEE009F0CB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D3DFCD71D0EDEEE009F0CB9 /* PBXTargetDependency */,
+			);
+			name = QualiumTests;
+			productName = QualiumTests;
+			productReference = 0D3DFCD51D0EDEEE009F0CB9 /* QualiumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0D3DFCDF1D0EDEEE009F0CB9 /* QualiumUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D3DFCEF1D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "QualiumUITests" */;
+			buildPhases = (
+				0D3DFCDC1D0EDEEE009F0CB9 /* Sources */,
+				0D3DFCDD1D0EDEEE009F0CB9 /* Frameworks */,
+				0D3DFCDE1D0EDEEE009F0CB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D3DFCE21D0EDEEE009F0CB9 /* PBXTargetDependency */,
+			);
+			name = QualiumUITests;
+			productName = QualiumUITests;
+			productReference = 0D3DFCE01D0EDEEE009F0CB9 /* QualiumUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D3DFCB91D0EDEED009F0CB9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = ATSUSHI;
+				TargetAttributes = {
+					0D3DFCC01D0EDEED009F0CB9 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					0D3DFCD41D0EDEEE009F0CB9 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 0D3DFCC01D0EDEED009F0CB9;
+					};
+					0D3DFCDF1D0EDEEE009F0CB9 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 0D3DFCC01D0EDEED009F0CB9;
+					};
+				};
+			};
+			buildConfigurationList = 0D3DFCBC1D0EDEED009F0CB9 /* Build configuration list for PBXProject "Qualium" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0D3DFCB81D0EDEED009F0CB9;
+			productRefGroup = 0D3DFCC21D0EDEED009F0CB9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D3DFCC01D0EDEED009F0CB9 /* Qualium */,
+				0D3DFCD41D0EDEEE009F0CB9 /* QualiumTests */,
+				0D3DFCDF1D0EDEEE009F0CB9 /* QualiumUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D3DFCBF1D0EDEED009F0CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D3DFCCF1D0EDEEE009F0CB9 /* LaunchScreen.storyboard in Resources */,
+				0D3DFCCC1D0EDEEE009F0CB9 /* Assets.xcassets in Resources */,
+				0D3DFCCA1D0EDEEE009F0CB9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D3DFCD31D0EDEEE009F0CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D3DFCDE1D0EDEEE009F0CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D3DFCBD1D0EDEED009F0CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D3DFCC71D0EDEEE009F0CB9 /* ViewController.swift in Sources */,
+				0D3DFCC51D0EDEEE009F0CB9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D3DFCD11D0EDEEE009F0CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D3DFCDA1D0EDEEE009F0CB9 /* QualiumTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D3DFCDC1D0EDEEE009F0CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D3DFCE51D0EDEEE009F0CB9 /* QualiumUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D3DFCD71D0EDEEE009F0CB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D3DFCC01D0EDEED009F0CB9 /* Qualium */;
+			targetProxy = 0D3DFCD61D0EDEEE009F0CB9 /* PBXContainerItemProxy */;
+		};
+		0D3DFCE21D0EDEEE009F0CB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D3DFCC01D0EDEED009F0CB9 /* Qualium */;
+			targetProxy = 0D3DFCE11D0EDEEE009F0CB9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0D3DFCC81D0EDEEE009F0CB9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D3DFCC91D0EDEEE009F0CB9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0D3DFCCD1D0EDEEE009F0CB9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D3DFCCE1D0EDEEE009F0CB9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D3DFCE71D0EDEEE009F0CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0D3DFCE81D0EDEEE009F0CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0D3DFCEA1D0EDEEE009F0CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Qualium/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.atsushi.Qualium;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0D3DFCEB1D0EDEEE009F0CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Qualium/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.atsushi.Qualium;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0D3DFCED1D0EDEEE009F0CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QualiumTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.atsushi.QualiumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Qualium.app/Qualium";
+			};
+			name = Debug;
+		};
+		0D3DFCEE1D0EDEEE009F0CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QualiumTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.atsushi.QualiumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Qualium.app/Qualium";
+			};
+			name = Release;
+		};
+		0D3DFCF01D0EDEEE009F0CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = QualiumUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.atsushi.QualiumUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Qualium;
+			};
+			name = Debug;
+		};
+		0D3DFCF11D0EDEEE009F0CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = QualiumUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.atsushi.QualiumUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Qualium;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D3DFCBC1D0EDEED009F0CB9 /* Build configuration list for PBXProject "Qualium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D3DFCE71D0EDEEE009F0CB9 /* Debug */,
+				0D3DFCE81D0EDEEE009F0CB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D3DFCE91D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "Qualium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D3DFCEA1D0EDEEE009F0CB9 /* Debug */,
+				0D3DFCEB1D0EDEEE009F0CB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0D3DFCEC1D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "QualiumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D3DFCED1D0EDEEE009F0CB9 /* Debug */,
+				0D3DFCEE1D0EDEEE009F0CB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0D3DFCEF1D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "QualiumUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D3DFCF01D0EDEEE009F0CB9 /* Debug */,
+				0D3DFCF11D0EDEEE009F0CB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D3DFCB91D0EDEED009F0CB9 /* Project object */;
+}
