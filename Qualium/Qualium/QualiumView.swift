@@ -21,11 +21,15 @@ protocol QualiumViewDataSource {
 
 private let kMinimumLineSpacing: CGFloat        = 15.0
 private let kMinimumInterQualiaSpacing: CGFloat = 15.0
+
+internal let CellIdentifier = "QualiaCell"
+
 class QualiumView: UIView {
     
     private var collectionView: UICollectionView!
-    private var layout  = UICollectionViewFlowLayout()
-    private var qualias = [Qualia]()
+    private var layout    = UICollectionViewFlowLayout()
+    var qualias   = [Qualia]()
+    private var cellSizes = [CGSize]()
     var delegate: QualiumViewDelegate!     = nil
     var dataSource: QualiumViewDataSource! = nil
     
@@ -46,6 +50,10 @@ class QualiumView: UIView {
     
     private func collectionViewSetup() {
         self.collectionView = UICollectionView(frame: self.frame, collectionViewLayout: self.layout)
+        self.collectionView.delegate   = self
+        self.collectionView.dataSource = self
+        self.collectionView.backgroundColor = UIColor.clearColor()
+        self.collectionView.registerNib(UINib(nibName: CellIdentifier, bundle: nil), forCellWithReuseIdentifier: CellIdentifier)
         self.addSubview(self.collectionView)
     }
     
@@ -67,6 +75,10 @@ class QualiumView: UIView {
         }
     }
 
+    func dequeueReusableCell(indexPath indexPath: NSIndexPath) -> QualiaCell {
+        return self.collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! QualiaCell
+    }
+    
 }
 
 extension QualiumView: UICollectionViewDelegate {
@@ -88,9 +100,24 @@ extension QualiumView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return self.dataSource.qualiumView(self, cellForQualiaAtIndexPath: indexPath)
+        let cell = self.dataSource.qualiumView(self, cellForQualiaAtIndexPath: indexPath)
+        self.cellSizes.append(cell.cellSize)
+        return cell
     }
     
+}
+
+extension QualiumView: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let dummyTextView  = UITextView()
+        dummyTextView.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
+        dummyTextView.text = (self.qualias[indexPath.row] as! Message).message
+        dummyTextView.attributedText = NSAttributedString(string: (self.qualias[indexPath.row] as! Message).message)
+        let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width, height: CGFloat.infinity))
+
+        return CGSizeMake(self.frame.width, size.height + Margin.Height)
+    }
 }
 
 private extension UICollectionView {
