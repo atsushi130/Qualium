@@ -91,11 +91,8 @@ class QualiaCell: UICollectionViewCell {
         case .Peer: self.icon.frame = CGRectMake(self.frame.size.width - Margin.Right - kIconDiameter, 0, kIconDiameter, kIconDiameter)
         }
 
-        self.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 15.0)
-        let size = self.textView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
-
-        let origin = self.textView.frame.origin
-        self.textView.frame = CGRectMake(origin.x, origin.y, size.width, size.height)
+        self.textView.font       = UIFont(name: "HelveticaNeue-Thin", size: 15.0)
+        self.textView.frame.size = self.textView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
         
         //view
         let margin = self.icon.frame.size.width + Margin.Width
