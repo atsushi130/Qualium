@@ -50,6 +50,9 @@ class QualiaCell: UICollectionViewCell {
     }
     
     private func setup() {
+        self.backgroundColor = UIColor.clearColor()
+        
+        // call for each setup
         self.viewSetup()
         self.textViewSetup()
         self.iconSetup()

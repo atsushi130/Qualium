@@ -54,6 +54,13 @@ class QualiumView: UIView {
         self.layout.minimumInteritemSpacing = kMinimumInterQualiaSpacing
     }
     
+    func newQualia(qualia: Qualia) {
+        self.qualias.append(qualia)
+        self.reloadData {
+            // implement function call in time of completed reloadData
+        }
+    }
+    
     func reloadData(completionHandler: (() -> Void)?) {
         self.collectionView.reloadData {
             completionHandler?()
