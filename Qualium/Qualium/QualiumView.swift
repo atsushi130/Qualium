@@ -55,7 +55,9 @@ class QualiumView: UIView {
     }
     
     func reloadData(completionHandler: (() -> Void)?) {
-        self.collectionView.reloadData(complateHandler: completionHandler)
+        self.collectionView.reloadData {
+            completionHandler?()
+        }
     }
 
 }
