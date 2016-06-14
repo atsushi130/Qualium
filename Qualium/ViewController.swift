@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.view.backgroundColor = UIColor.redColor()
+        
         self.qualiumView = QualiumView(frame: self.view.frame)
         self.qualiumView.delegate   = self
         self.qualiumView.dataSource = self
@@ -24,7 +26,7 @@ class ViewController: UIViewController {
         
         [Int](0...5).forEach({
             let qualia = Message(vector: .Me, ID: "")
-            qualia.message = "こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！"
+            qualia.message = "こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0)"
             if $0 % 2 == 0 {
                 qualia.vector = .Peer
             }

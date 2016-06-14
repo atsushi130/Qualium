@@ -111,10 +111,9 @@ extension QualiumView: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let dummyTextView  = UITextView()
-        dummyTextView.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
+        dummyTextView.font = UIFont(name: "HelveticaNeue-Thin", size: 15.0)
         dummyTextView.text = (self.qualias[indexPath.row] as! Message).message
-        dummyTextView.attributedText = NSAttributedString(string: (self.qualias[indexPath.row] as! Message).message)
-        let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width, height: CGFloat.infinity))
+        let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
 
         return CGSizeMake(self.frame.width, size.height + Margin.Height)
     }

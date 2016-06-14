@@ -19,13 +19,15 @@ struct Margin {
     static let Height: CGFloat = Margin.Top + Margin.Bottom
 }
 
-private let kIconDiameter: CGFloat = 20.0
-private let kCornerRadius: CGFloat = 10.0
+private let kIconDiameter: CGFloat     = 20.0
+private let kIconCornerRadius: CGFloat = 10.0
+
+private let kCornerRadius: CGFloat = 5.0
 
 class QualiaCell: UICollectionViewCell {
     
     private let textView = UITextView()
-    private let view     = UIView()
+    private let view     = UIVisualEffectView()
     let icon             = UIImageView()
     var qualia           = Qualia()
     
@@ -59,6 +61,9 @@ class QualiaCell: UICollectionViewCell {
     
     private func viewSetup() {
         self.addSubview(self.view)
+        
+        self.view.layer.cornerRadius  = kCornerRadius
+        self.view.layer.masksToBounds = true
     }
     
     private func textViewSetup() {
@@ -69,11 +74,12 @@ class QualiaCell: UICollectionViewCell {
         self.textView.editable                     = false
         self.textView.showsVerticalScrollIndicator = false
         self.textView.contentInset                 = UIEdgeInsetsMake(-2.5, 0, 0, 0) // fource narrow the top margin
+        self.textView.backgroundColor              = UIColor.clearColor()
     }
     
     private func iconSetup() {
         self.addSubview(self.icon)
-        self.icon.layer.cornerRadius  = kCornerRadius
+        self.icon.layer.cornerRadius  = kIconCornerRadius
         self.icon.layer.masksToBounds = true
     }
 
@@ -85,12 +91,11 @@ class QualiaCell: UICollectionViewCell {
         case .Peer: self.icon.frame = CGRectMake(self.frame.size.width - Margin.Right - kIconDiameter, 0, kIconDiameter, kIconDiameter)
         }
 
-        self.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
-        self.textView.attributedText = NSAttributedString(string: self.textView.text)
-        let size = self.textView.sizeThatFits(CGSize(width: self.frame.size.width, height: CGFloat.infinity))
+        self.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 15.0)
+        let size = self.textView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
 
         let origin = self.textView.frame.origin
-        self.textView.frame = CGRectMake(origin.x, origin.y, size.height, size.height)
+        self.textView.frame = CGRectMake(origin.x, origin.y, size.width, size.height)
         
         //view
         let margin = self.icon.frame.size.width + Margin.Width
@@ -98,13 +103,13 @@ class QualiaCell: UICollectionViewCell {
         case .Me:
             let width = self.textView.frame.size.width + Margin.Width // equal view size width
             let x     = self.frame.size.width - margin - width  // view-icon-|
-            self.view.frame           = CGRectMake(x, 0, width, self.textView.frame.size.height + Margin.Height)
-            self.view.backgroundColor = UIColor.blackColor()
+            self.view.frame  = CGRectMake(x, 0, width, self.textView.frame.size.height + Margin.Height)
+            self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             
         case .Peer:
             // margin = |-icon-view
-            self.view.frame           = CGRectMake(margin, 0, self.textView.frame.size.width + Margin.Width, self.textView.frame.size.height + Margin.Height)
-            self.view.backgroundColor = UIColor.whiteColor()
+            self.view.frame  = CGRectMake(margin, 0, self.textView.frame.size.width + Margin.Width, self.textView.frame.size.height + Margin.Height)
+            self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         }
         
     }
