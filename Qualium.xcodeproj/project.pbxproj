@@ -17,6 +17,7 @@
 		0D3DFCF41D0EE013009F0CB9 /* Qualia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF31D0EE013009F0CB9 /* Qualia.swift */; };
 		0D3DFCF61D0EF606009F0CB9 /* QualiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF51D0EF606009F0CB9 /* QualiumView.swift */; };
 		0D3DFCF81D0EF7F9009F0CB9 /* QualiaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF71D0EF7F9009F0CB9 /* QualiaCell.swift */; };
+		0D3DFCFA1D103C0E009F0CB9 /* QualiaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF91D103C0E009F0CB9 /* QualiaCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		0D3DFCF31D0EE013009F0CB9 /* Qualia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Qualia.swift; path = Qualium/Qualia.swift; sourceTree = "<group>"; };
 		0D3DFCF51D0EF606009F0CB9 /* QualiumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiumView.swift; path = Qualium/QualiumView.swift; sourceTree = "<group>"; };
 		0D3DFCF71D0EF7F9009F0CB9 /* QualiaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiaCell.swift; path = Qualium/QualiaCell.swift; sourceTree = "<group>"; };
+		0D3DFCF91D103C0E009F0CB9 /* QualiaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QualiaCell.xib; path = Qualium/QualiaCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				0D3DFCF31D0EE013009F0CB9 /* Qualia.swift */,
 				0D3DFCF51D0EF606009F0CB9 /* QualiumView.swift */,
 				0D3DFCF71D0EF7F9009F0CB9 /* QualiaCell.swift */,
+				0D3DFCF91D103C0E009F0CB9 /* QualiaCell.xib */,
 			);
 			name = Qualium;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3DFCFA1D103C0E009F0CB9 /* QualiaCell.xib in Resources */,
 				0D3DFCCF1D0EDEEE009F0CB9 /* LaunchScreen.storyboard in Resources */,
 				0D3DFCCC1D0EDEEE009F0CB9 /* Assets.xcassets in Resources */,
 				0D3DFCCA1D0EDEEE009F0CB9 /* Main.storyboard in Resources */,
@@ -502,6 +506,7 @@
 				0D3DFCEB1D0EDEEE009F0CB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D3DFCEC1D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "QualiumTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +515,7 @@
 				0D3DFCEE1D0EDEEE009F0CB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D3DFCEF1D0EDEEE009F0CB9 /* Build configuration list for PBXNativeTarget "QualiumUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +524,7 @@
 				0D3DFCF11D0EDEEE009F0CB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
