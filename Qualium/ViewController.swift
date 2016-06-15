@@ -9,6 +9,7 @@
 import UIKit
 
 let UserID = "ATUSHI_MIYAKE"
+let TestTexts = ["The Dance of Eternity\nMetropolis part 2", "Bridges In the Sky\nA Dramatic Turn Of Events", "Constant Motion\nSystematic Chaos", "Panic Attack\nOctavarium", "Octavarium", "Metropolis\nImages and Words", "Illmination Theory\nDream Theater", "Enigma Machine", "Hell's Kitchin\nFalling Into Infinity", "The Count of Tascany\nBlack Clouds & Silver Linings", "Cought In a Web\nAwake", "Moment Of Betrayal\nThe Astonshing", "As I Am\nTrain of Thought", "Stream Of Consciousness", "Endless Sacrifice", "New Millennium", "Overture 1928", "Strange Deja vu"]
 
 class ViewController: UIViewController {
 
@@ -30,9 +31,9 @@ class ViewController: UIViewController {
         self.qualiumView.dataSource = self
         self.view.addSubview(self.qualiumView)
         
-        [Int](0...10).forEach({
+        [Int](0...17).forEach({
             let qualia = Message(ID: (UserID, NSUUID().UUIDString))
-            qualia.message = ""
+            qualia.message = TestTexts[$0]
             if $0 % 2 == 0 {
                 qualia.ID.user = "PEER"
             }

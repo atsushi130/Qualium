@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 private struct Margin {
-    static let Left: CGFloat   = 10.0
-    static let Right: CGFloat  = 10.0
-    static let Top: CGFloat    = 5.0
-    static let Bottom: CGFloat = 5.0
+    static let Left: CGFloat   = 5.0
+    static let Right: CGFloat  = 5.0
+    static let Top: CGFloat    = 0.0
+    static let Bottom: CGFloat = 0.0
     
     static let Width: CGFloat  = Margin.Left + Margin.Right
     static let Height: CGFloat = Margin.Top + Margin.Bottom
@@ -73,8 +73,9 @@ class QualiaCell: UICollectionViewCell {
         self.textView.scrollEnabled                = false
         self.textView.editable                     = false
         self.textView.showsVerticalScrollIndicator = false
-        self.textView.contentInset                 = UIEdgeInsetsMake(-2.5, 0, 0, 0) // fource narrow the top margin
-        self.textView.backgroundColor              = UIColor.clearColor()
+        self.textView.contentInset                 = UIEdgeInsetsMake(-2.25, 0, 0, 0) // fource narrow the top margin
+        self.textView.backgroundColor              = UIColor.init(colorLiteralRed: 255, green: 255, blue: 255, alpha: 0)
+        self.textView.textColor                    = UIColor.whiteColor()
     }
     
     private func iconSetup() {
@@ -97,16 +98,16 @@ class QualiaCell: UICollectionViewCell {
         //view
         let margin = self.icon.frame.size.width + Margin.Width
         switch self.qualia.vector(UserID) {
+        case .Me:
+            // margin = |-icon-view
+            self.view.frame  = CGRectMake(margin, 0, self.textView.frame.size.width + Margin.Width, self.textView.frame.size.height + Margin.Height)
+            self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            
         case .Peer:
             let width = self.textView.frame.size.width + Margin.Width // equal view size width
             let x     = self.frame.size.width - margin - width  // view-icon-|
             self.view.frame  = CGRectMake(x, 0, width, self.textView.frame.size.height + Margin.Height)
             self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-            
-        case .Me:
-            // margin = |-icon-view
-            self.view.frame  = CGRectMake(margin, 0, self.textView.frame.size.width + Margin.Width, self.textView.frame.size.height + Margin.Height)
-            self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         }
         
     }

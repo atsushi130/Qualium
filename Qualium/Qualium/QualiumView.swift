@@ -20,8 +20,8 @@ protocol QualiumViewDataSource {
     func qualiumView(qualiumView: QualiumView, cellForQualiaAtIndexPath indexPath: NSIndexPath) -> QualiaCell
 }
 
-private let kMinimumLineSpacing: CGFloat        = 15.0
-private let kMinimumInterQualiaSpacing: CGFloat = 15.0
+private let kMinimumLineSpacing: CGFloat        = 0.0
+private let kMinimumInterQualiaSpacing: CGFloat = 0.0
 
 private let kBarViewHeight: CGFloat    = 50.0
 private let kTextViewHeight: CGFloat   = 40.0
@@ -91,8 +91,9 @@ class QualiumView: UIView {
     }
     
     private func collectionViewFlowLayoutSetup() {
-        self.layout.minimumLineSpacing      = kMinimumLineSpacing
-        self.layout.minimumInteritemSpacing = kMinimumInterQualiaSpacing
+        self.layout.minimumLineSpacing      = kMinimumLineSpacing        // section - item margin
+        self.layout.minimumInteritemSpacing = kMinimumInterQualiaSpacing // item - item margin
+        self.layout.sectionInset            = UIEdgeInsetsMake(20, 0, 10, 0) // top, left, bottom, right
     }
     
     private func barViewSetup() {
