@@ -85,6 +85,7 @@ extension ViewController: QualiumViewDataSource {
         let qualia = self.qualias[indexPath.row] as! Message
         cell.qualia = qualia
         cell.text   = qualia.message
+        cell.icon.image = UIImage(named: "icon_0")
         
         return cell
     }

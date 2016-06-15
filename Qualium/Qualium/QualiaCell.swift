@@ -19,8 +19,8 @@ private struct Margin {
     static let Height: CGFloat = Margin.Top + Margin.Bottom
 }
 
-private let kIconDiameter: CGFloat     = 20.0
-private let kIconCornerRadius: CGFloat = 10.0
+private let kIconDiameter: CGFloat     = 30.0
+private let kIconCornerRadius: CGFloat = 15.0
 
 private let kCornerRadius: CGFloat = 10.0
 
@@ -87,8 +87,8 @@ class QualiaCell: UICollectionViewCell {
         
         //icon
         switch self.qualia.vector(UserID) {
-        case .Peer:   self.icon.frame = CGRectMake(Margin.Left, 0, kIconDiameter, kIconDiameter)
-        case .Me:     self.icon.frame = CGRectMake(self.frame.size.width - Margin.Right - kIconDiameter, 0, kIconDiameter, kIconDiameter)
+        case .Me:   self.icon.frame = CGRectMake(Margin.Left, 0, kIconDiameter, kIconDiameter)
+        case .Peer: self.icon.frame = CGRectMake(self.frame.size.width - Margin.Right - kIconDiameter, 0, kIconDiameter, kIconDiameter)
         }
 
         self.textView.font       = UIFont(name: "HelveticaNeue-Thin", size: 15.0)
