@@ -22,7 +22,7 @@ struct Margin {
 private let kIconDiameter: CGFloat     = 20.0
 private let kIconCornerRadius: CGFloat = 10.0
 
-private let kCornerRadius: CGFloat = 5.0
+private let kCornerRadius: CGFloat = 10.0
 
 class QualiaCell: UICollectionViewCell {
     
