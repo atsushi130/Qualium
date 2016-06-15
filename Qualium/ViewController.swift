@@ -8,10 +8,16 @@
 
 import UIKit
 
+let UserID = "ATUSHI_MIYAKE"
+
 class ViewController: UIViewController {
 
     var qualiumView: QualiumView!
-    var qualias = [Qualia]()
+    var qualias = [Qualia]() {
+        didSet {
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +31,25 @@ class ViewController: UIViewController {
         self.view.addSubview(self.qualiumView)
         
         [Int](0...5).forEach({
-            let qualia = Message(vector: .Me, ID: "")
-            qualia.message = "こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0) SwiftもScalaを最高だぜ！こんにちは、関数型言語！！ Mr.\($0)"
+            let qualia = Message(ID: (UserID, NSUUID().UUIDString))
+            qualia.message = ""
             if $0 % 2 == 0 {
-                qualia.vector = .Peer
+                qualia.ID.user = "PEER"
             }
             self.qualias.append(qualia)
         })
         
         self.qualiumView.qualias = self.qualias
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            NSThread.sleepForTimeInterval(3)
+            dispatch_async(dispatch_get_main_queue(), {
+                let qualia = Message(ID: ("PEER", NSUUID().UUIDString))
+                qualia.message = "new qualia"
+                self.qualias.append(qualia)
+                self.qualiumView.newQualia(qualia)
+            })
+        })
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,10 +22,11 @@ enum QualiaTypes {
 }
 
 protocol QualiaObject {
-    var vector: QualiaVactor { get set }
+    //var vector: QualiaVactor { get set }
     var type: QualiaTypes { get set }
-    var ID: String! { get set }
-    init(vector: QualiaVactor, ID: String)
+    var ID: (user: String!, qualia: String!) { get set }
+    init(/*vector: QualiaVactor, */ID: (user: String!, qualia: String!))
+    func vector(ID: String) -> QualiaVactor
 }
 
 protocol QualiaMessage: QualiaObject {
@@ -86,18 +87,21 @@ extension QualiaQuestion {
 
 class Qualia: NSObject, QualiaObject {
     
-    var vector: QualiaVactor = .Me
-    var ID: String!          = ""
+    //var vector: QualiaVactor = .Me
+    var ID: (user: String!, qualia: String!) = ("", "")
     var type: QualiaTypes = .Message
     
     override init() {
         super.init()
     }
     
-    required init(vector: QualiaVactor, ID: String) {
+    required init(/*vector: QualiaVactor, */ID: (user: String!, qualia: String!)) {
         super.init()
-        self.vector = vector
+        //self.vector = vector
         self.ID     = ID
     }
     
+    func vector(ID: String) -> QualiaVactor {
+        return ID == self.ID.user ? .Peer : .Me
+    }
 }

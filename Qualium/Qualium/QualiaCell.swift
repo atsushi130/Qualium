@@ -86,9 +86,9 @@ class QualiaCell: UICollectionViewCell {
     private func sizeFit() {
         
         //icon
-        switch self.qualia.vector {
-        case .Me:   self.icon.frame = CGRectMake(Margin.Left, 0, kIconDiameter, kIconDiameter)
-        case .Peer: self.icon.frame = CGRectMake(self.frame.size.width - Margin.Right - kIconDiameter, 0, kIconDiameter, kIconDiameter)
+        switch self.qualia.vector(UserID) {
+        case .Peer:   self.icon.frame = CGRectMake(Margin.Left, 0, kIconDiameter, kIconDiameter)
+        case .Me:     self.icon.frame = CGRectMake(self.frame.size.width - Margin.Right - kIconDiameter, 0, kIconDiameter, kIconDiameter)
         }
 
         self.textView.font       = UIFont(name: "HelveticaNeue-Thin", size: 15.0)
@@ -96,14 +96,14 @@ class QualiaCell: UICollectionViewCell {
         
         //view
         let margin = self.icon.frame.size.width + Margin.Width
-        switch self.qualia.vector {
-        case .Me:
+        switch self.qualia.vector(UserID) {
+        case .Peer:
             let width = self.textView.frame.size.width + Margin.Width // equal view size width
             let x     = self.frame.size.width - margin - width  // view-icon-|
             self.view.frame  = CGRectMake(x, 0, width, self.textView.frame.size.height + Margin.Height)
             self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             
-        case .Peer:
+        case .Me:
             // margin = |-icon-view
             self.view.frame  = CGRectMake(margin, 0, self.textView.frame.size.width + Margin.Width, self.textView.frame.size.height + Margin.Height)
             self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Light)

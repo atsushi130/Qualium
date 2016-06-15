@@ -66,12 +66,20 @@ class QualiumView: UIView {
         self.qualias.append(qualia)
         self.reloadData {
             // implement function call in time of completed reloadData
+            self.collectionViewScrollToBottomAnimated(animated: true)
         }
     }
     
     func reloadData(completionHandler: (() -> Void)?) {
         self.collectionView.reloadData {
             completionHandler?()
+        }
+    }
+    
+    private func collectionViewScrollToBottomAnimated(animated animated: Bool) {
+        let count = self.dataSource.qualiumView(self, numberOfQualiasInSection: 0)
+        if count > 0 {
+            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: count - 1, inSection: 0), atScrollPosition: .Bottom, animated: animated)
         }
     }
 
