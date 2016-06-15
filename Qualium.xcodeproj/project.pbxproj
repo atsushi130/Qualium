@@ -18,6 +18,7 @@
 		0D3DFCF61D0EF606009F0CB9 /* QualiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF51D0EF606009F0CB9 /* QualiumView.swift */; };
 		0D3DFCF81D0EF7F9009F0CB9 /* QualiaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF71D0EF7F9009F0CB9 /* QualiaCell.swift */; };
 		0D3DFCFA1D103C0E009F0CB9 /* QualiaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3DFCF91D103C0E009F0CB9 /* QualiaCell.xib */; };
+		0D3DFCFC1D11A5DC009F0CB9 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCFB1D11A5DC009F0CB9 /* Operator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0D3DFCF51D0EF606009F0CB9 /* QualiumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiumView.swift; path = Qualium/QualiumView.swift; sourceTree = "<group>"; };
 		0D3DFCF71D0EF7F9009F0CB9 /* QualiaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiaCell.swift; path = Qualium/QualiaCell.swift; sourceTree = "<group>"; };
 		0D3DFCF91D103C0E009F0CB9 /* QualiaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QualiaCell.xib; path = Qualium/QualiaCell.xib; sourceTree = "<group>"; };
+		0D3DFCFB1D11A5DC009F0CB9 /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operator.swift; path = Qualium/Operator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				0D3DFCF51D0EF606009F0CB9 /* QualiumView.swift */,
 				0D3DFCF71D0EF7F9009F0CB9 /* QualiaCell.swift */,
 				0D3DFCF91D103C0E009F0CB9 /* QualiaCell.xib */,
+				0D3DFCFB1D11A5DC009F0CB9 /* Operator.swift */,
 			);
 			name = Qualium;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D3DFCF81D0EF7F9009F0CB9 /* QualiaCell.swift in Sources */,
+				0D3DFCFC1D11A5DC009F0CB9 /* Operator.swift in Sources */,
 				0D3DFCF41D0EE013009F0CB9 /* Qualia.swift in Sources */,
 				0D3DFCF61D0EF606009F0CB9 /* QualiumView.swift in Sources */,
 				0D3DFCC71D0EDEEE009F0CB9 /* ViewController.swift in Sources */,

@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         self.qualiumView.dataSource = self
         self.view.addSubview(self.qualiumView)
         
-        [Int](0...5).forEach({
+        [Int](0...10).forEach({
             let qualia = Message(ID: (UserID, NSUUID().UUIDString))
             qualia.message = ""
             if $0 % 2 == 0 {

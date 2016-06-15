@@ -56,8 +56,9 @@ class QualiumView: UIView {
     private var layout    = UICollectionViewFlowLayout()
     private var qualias   = [Qualia]()
     private var cellSizes = [CGSize]()
-    var delegate: QualiumViewDelegate!     = nil
-    var dataSource: QualiumViewDataSource! = nil
+    private var collectionViewRect          = CGRectZero
+    var delegate: QualiumViewDelegate!      = nil
+    var dataSource: QualiumViewDataSource!  = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -146,11 +147,19 @@ class QualiumView: UIView {
         let userInfo = notification.userInfo!
         let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
-        
+        self.collectionViewRect = self.collectionView.frame
         self.collectionView.addGestureRecognizer(self.gestureRecognizer)
         
         UIView.animateWithDuration(duration, animations: {
             self.barView.transform = CGAffineTransformTranslate(self.barView.transform, 0, -keyboardRect.height)
+        
+            if (Double(self.collectionView.contentSize.height) |-| Double(self.collectionView.frame.height + self.collectionView.contentOffset.y)) <= 100 {
+                self.collectionView.setContentOffset(CGPointMake(0, self.collectionView.contentOffset.y + keyboardRect.height), animated: false)
+            }
+            
+            }, completion: { (finished: Bool) -> Void in
+                let rect = self.collectionView.frame
+                self.collectionView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.width, self.collectionViewRect.height - keyboardRect.height)
         })
     }
     
@@ -159,6 +168,7 @@ class QualiumView: UIView {
         
         UIView.animateWithDuration(duration, animations: {
             self.barView.transform = CGAffineTransformIdentity
+            self.collectionView.frame = self.collectionViewRect
             }, completion: {(finished: Bool) -> Void in
                 self.collectionView.removeGestureRecognizer(self.gestureRecognizer)
         })
