@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             self.qualias.append(qualia)
         })
         
-        self.qualiumView.qualias = self.qualias
+        self.qualiumView.syncQualias(self.qualias)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             NSThread.sleepForTimeInterval(3)
@@ -60,7 +60,12 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: QualiumViewDelegate {
+    
     func qualiumView(qualiumView: QualiumView, didSelectQualiaAtIndexPath indexPath: NSIndexPath) {
+    }
+    
+    func qualiumView(willSendQualia qualia: Qualia) {
+        // will send
     }
 }
 

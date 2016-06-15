@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Margin {
+private struct Margin {
     static let Left: CGFloat   = 10.0
     static let Right: CGFloat  = 10.0
     static let Top: CGFloat    = 5.0
