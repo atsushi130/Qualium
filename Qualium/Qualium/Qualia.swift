@@ -22,43 +22,28 @@ enum QualiaTypes {
 }
 
 protocol QualiaObject {
-    //var vector: QualiaVactor { get set }
     var type: QualiaTypes { get set }
     var ID: (user: String!, qualia: String!) { get set }
-    init(/*vector: QualiaVactor, */ID: (user: String!, qualia: String!))
+    init(ID: (user: String!, qualia: String!))
     func vector(ID: String) -> QualiaVactor
+}
+
+extension QualiaObject {
+    final func vector(ID: String) -> QualiaVactor {
+        return ID == self.ID.user ? .Peer : .Me
+    }
 }
 
 protocol QualiaMessage: QualiaObject {
     var message: String! { get set }
 }
 
-extension QualiaMessage {
-    var type: QualiaTypes {
-        get { return .Message }
-        set {}
-    }
-}
-
 protocol QualiaMovie: QualiaObject {
     var movie: NSData { get set }
 }
 
-extension QualiaMovie {
-    var type: QualiaTypes {
-        get { return .Movie }
-        set {}
-    }
-}
-
 protocol QualiaImage: QualiaObject {
     var image: UIImage { get set }
-}
-
-extension QualiaImage {
-    var type: QualiaTypes {
-        get { return .Image }
-    }
 }
 
 class Choice: NSObject {
@@ -78,16 +63,8 @@ protocol QualiaQuestion: QualiaObject {
     var choices: [Choice] { get set }
 }
 
-extension QualiaQuestion {
-    var type: QualiaTypes {
-        get { return .Question }
-        set {}
-    }
-}
-
 class Qualia: NSObject, QualiaObject {
     
-    //var vector: QualiaVactor = .Me
     var ID: (user: String!, qualia: String!) = ("", "")
     var type: QualiaTypes = .Message
     
@@ -95,13 +72,9 @@ class Qualia: NSObject, QualiaObject {
         super.init()
     }
     
-    required init(/*vector: QualiaVactor, */ID: (user: String!, qualia: String!)) {
+    required init(ID: (user: String!, qualia: String!)) {
         super.init()
-        //self.vector = vector
-        self.ID     = ID
+        self.ID = ID
     }
     
-    func vector(ID: String) -> QualiaVactor {
-        return ID == self.ID.user ? .Peer : .Me
-    }
 }

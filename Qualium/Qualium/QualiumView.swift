@@ -24,20 +24,22 @@ private let kMinimumLineSpacing: CGFloat        = 0.0
 private let kMinimumInterQualiaSpacing: CGFloat = 0.0
 
 private let kBarViewHeight: CGFloat    = 50.0
-private let kTextViewHeight: CGFloat   = 40.0
+private let kTextViewHeight: CGFloat   = 35.0
 
-private let kCornerRadius: CGFloat = 10.0
+private let kCornerRadius: CGFloat = 5.0
+
+private let Font = "HelveticaNeue-Thin"
 
 private struct kSendButton {
-    static let Width: CGFloat  = 50.0
-    static let Height: CGFloat = kTextViewHeight
+    static let Width: CGFloat  = 30.0
+    static let Height: CGFloat = kTextViewHeight - 15
 }
 
 private struct Margin {
     static let Left: CGFloat   = 5.0
     static let Right: CGFloat  = 5.0
-    static let Top: CGFloat    = 5.0
-    static let Bottom: CGFloat = 5.0
+    static let Top: CGFloat    = 7.5
+    static let Bottom: CGFloat = 7.5
     
     static let Width: CGFloat  = Margin.Left + Margin.Right
     static let Height: CGFloat = Margin.Top + Margin.Bottom
@@ -98,7 +100,7 @@ class QualiumView: UIView {
     
     private func barViewSetup() {
         self.barView = UIView(frame: CGRectMake(0, self.frame.size.height - kBarViewHeight, self.frame.size.width, kBarViewHeight))
-        self.barView.backgroundColor = UIColor.blackColor()
+        self.barView.backgroundColor = UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1.0)
         self.addSubview(self.barView)
     }
     
@@ -107,18 +109,17 @@ class QualiumView: UIView {
         self.textView = UITextView(frame: CGRectMake(Margin.Left, Margin.Top, width, kTextViewHeight))
         self.textView.layer.cornerRadius  = kCornerRadius
         self.textView.layer.masksToBounds = true
+        self.textView.font = UIFont(name: Font, size: 18)
         self.barView.addSubview(self.textView)
     }
     
     private func sendButtonSetup() {
         let x           = Margin.Left + self.textView.frame.size.width + Margin.Left
-        self.sendButton = UIButton(frame: CGRectMake(x, Margin.Top, kSendButton.Width, kSendButton.Height))
-        self.sendButton.backgroundColor = UIColor.whiteColor()
-        self.sendButton.setTitle("Send", forState: .Normal)
+        self.sendButton = UIButton(frame: CGRectMake(x, Margin.Top + 8.25, kSendButton.Width, kSendButton.Height))
+        self.sendButton.backgroundColor = UIColor.clearColor()
         self.sendButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         self.sendButton.addTarget(self, action: #selector(QualiumView.qualiaSend(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        self.sendButton.layer.cornerRadius  = kCornerRadius
-        self.sendButton.layer.masksToBounds = true
+        self.sendButton.setImage(UIImage(named: "airplane"), forState: UIControlState.Normal)
         self.barView.addSubview(self.sendButton)
     }
     
@@ -134,10 +135,34 @@ class QualiumView: UIView {
     
     @objc private func qualiaSend(sender: UIButton) {
         if self.checkText() {
+            self.animateAirPlane()
             let qualia     = Message(ID: (UserID, ""))
             qualia.message = self.textView.text
+            self.textView.text = ""
             self.delegate.qualiumView(willSendQualia: qualia)
         }
+    }
+    
+    private func animateAirPlane() {
+        self.sendButton.userInteractionEnabled = false
+        UIView.animateWithDuration(0.5, animations: {
+            self.sendButton.transform = CGAffineTransformTranslate(self.sendButton.transform, -3, 2)
+            }, completion: { (finished: Bool) -> Void in
+                UIView.animateWithDuration(0.2, animations: {
+                    self.sendButton.transform = CGAffineTransformTranslate(self.sendButton.transform, 300, -200)
+                    }, completion: { (finished: Bool) -> Void in
+                        self.sendButton.transform = CGAffineTransformIdentity
+                        self.sendButton.transform = CGAffineTransformScale(self.sendButton.transform, 0.1, 0.1)
+                        self.sendButton.alpha     = 0.0
+                        UIView.animateWithDuration(0.5, delay: 0.75, usingSpringWithDamping: 0.75, initialSpringVelocity: 10,
+                            options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                                self.sendButton.transform = CGAffineTransformIdentity
+                                self.sendButton.alpha     = 1.0
+                            }, completion: { (finished: Bool) -> Void in
+                                self.sendButton.userInteractionEnabled = true
+                        })
+                })
+        })
     }
     
     private func checkText() -> Bool {
@@ -243,7 +268,7 @@ extension QualiumView: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let dummyTextView  = UITextView()
-        dummyTextView.font = UIFont(name: "HelveticaNeue-Thin", size: 15.0)
+        dummyTextView.font = UIFont(name: Font, size: 15.0)
         dummyTextView.text = (self.qualias[indexPath.row] as! Message).message
         let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
 

@@ -22,7 +22,7 @@ private struct Margin {
 private let kIconDiameter: CGFloat     = 30.0
 private let kIconCornerRadius: CGFloat = 15.0
 
-private let kCornerRadius: CGFloat = 10.0
+private let kCornerRadius: CGFloat = 5.0
 
 class QualiaCell: UICollectionViewCell {
     
@@ -73,9 +73,8 @@ class QualiaCell: UICollectionViewCell {
         self.textView.scrollEnabled                = false
         self.textView.editable                     = false
         self.textView.showsVerticalScrollIndicator = false
+        self.textView.backgroundColor              = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
         self.textView.contentInset                 = UIEdgeInsetsMake(-2.25, 0, 0, 0) // fource narrow the top margin
-        self.textView.backgroundColor              = UIColor.init(colorLiteralRed: 255, green: 255, blue: 255, alpha: 0)
-        self.textView.textColor                    = UIColor.whiteColor()
     }
     
     private func iconSetup() {
@@ -101,13 +100,15 @@ class QualiaCell: UICollectionViewCell {
         case .Me:
             // margin = |-icon-view
             self.view.frame  = CGRectMake(margin, 0, self.textView.frame.size.width + Margin.Width, self.textView.frame.size.height + Margin.Height)
-            self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            self.view.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
+            self.textView.textColor   = UIColor.whiteColor()
             
         case .Peer:
             let width = self.textView.frame.size.width + Margin.Width // equal view size width
             let x     = self.frame.size.width - margin - width  // view-icon-|
             self.view.frame  = CGRectMake(x, 0, width, self.textView.frame.size.height + Margin.Height)
-            self.view.effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            self.view.backgroundColor = UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1.0)
+            self.textView.textColor   = UIColor.whiteColor()
         }
         
     }

@@ -11,22 +11,22 @@ import UIKit
 let UserID = "ATUSHI_MIYAKE"
 let TestTexts = ["The Dance of Eternity\nMetropolis part 2", "Bridges In the Sky\nA Dramatic Turn Of Events", "Constant Motion\nSystematic Chaos", "Panic Attack\nOctavarium", "Octavarium", "Metropolis\nImages and Words", "Illmination Theory\nDream Theater", "Enigma Machine", "Hell's Kitchin\nFalling Into Infinity", "The Count of Tascany\nBlack Clouds & Silver Linings", "Cought In a Web\nAwake", "Moment Of Betrayal\nThe Astonshing", "As I Am\nTrain of Thought", "Stream Of Consciousness", "Endless Sacrifice", "New Millennium", "Overture 1928", "Strange Deja vu"]
 
+let NavigationBarHeight: CGFloat = 64.0
+
 class ViewController: UIViewController {
 
     var qualiumView: QualiumView!
-    var qualias = [Qualia]() {
-        didSet {
-            
-        }
-    }
+    var qualias = [Qualia]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.backgroundColor = UIColor.redColor()
+        //self.view.backgroundColor = UIColor.grayColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1.0)
+        self.navigationController?.navigationBar.translucent  = false
         
-        self.qualiumView = QualiumView(frame: self.view.frame)
+        self.qualiumView = QualiumView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - NavigationBarHeight))
         self.qualiumView.delegate   = self
         self.qualiumView.dataSource = self
         self.view.addSubview(self.qualiumView)
@@ -67,6 +67,8 @@ extension ViewController: QualiumViewDelegate {
     
     func qualiumView(willSendQualia qualia: Qualia) {
         // will send
+        self.qualias.append(qualia)
+        self.qualiumView.newQualia(qualia)
     }
 }
 
