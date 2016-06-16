@@ -137,7 +137,7 @@ class QualiumView: UIView {
     @objc private func qualiaSend(sender: UIButton) {
         if self.checkText() {
             self.animateAirPlane()
-            let qualia     = Message(ID: (UserID, ""))
+            let qualia     = Message(ID: (UserID, NSUUID().UUIDString))
             qualia.message = self.textView.text
             self.textView.text = ""
             self.delegate.qualiumView(willSendQualia: qualia)

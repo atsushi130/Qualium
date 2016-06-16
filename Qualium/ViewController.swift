@@ -9,7 +9,7 @@
 import UIKit
 
 let UserID = "ATUSHI_MIYAKE"
-let TestTexts = ["The Dance of Eternity\nMetropolis part 2", "Bridges In the Sky\nA Dramatic Turn Of Events", "Constant Motion\nSystematic Chaos", "Panic Attack\nOctavarium", "Octavarium", "Metropolis\nImages and Words", "Illmination Theory\nDream Theater", "Enigma Machine", "Hell's Kitchin\nFalling Into Infinity", "The Count of Tascany\nBlack Clouds & Silver Linings", "Cought In a Web\nAwake", "Moment Of Betrayal\nThe Astonshing", "As I Am\nTrain of Thought", "Stream Of Consciousness", "Endless Sacrifice", "New Millennium", "Overture 1928", "Strange Deja vu"]
+let TestTexts = ["The Dance of Eternity\nMetropolis part 2", "Bridges In the Sky\nA Dramatic Turn Of Events", "Constant Motion\nSystematic Chaos", "Panic Attack\nOctavarium", "Octavarium", "Metropolis\nImages and Words", "Illmination Theory\nDream Theater", "Enigma Machine", "Hell's Kitchin\nFalling Into Infinity", "The Count of Tascany\nBlack Clouds & Silver Linings", "Cought In a Web\nAwake", "Moment Of Betrayal\nThe Astonshing", "Stream Of Consciousness", "Endless Sacrifice", "New Millennium", "Overture 1928", "Strange Deja vu"]
 
 let NavigationBarHeight: CGFloat = 64.0
 
@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //self.view.backgroundColor = UIColor.grayColor()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1.0)
         self.navigationController?.navigationBar.translucent  = false
         
@@ -31,7 +30,7 @@ class ViewController: UIViewController {
         self.qualiumView.dataSource = self
         self.view.addSubview(self.qualiumView)
         
-        [Int](0...17).forEach({
+        [Int](0...TestTexts.count-1).forEach({
             let qualia = Message(ID: (UserID, NSUUID().UUIDString))
             qualia.message = TestTexts[$0]
             if $0 % 2 == 0 {
@@ -42,6 +41,7 @@ class ViewController: UIViewController {
         
         self.qualiumView.syncQualias(self.qualias)
         
+        /*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             NSThread.sleepForTimeInterval(3)
             dispatch_async(dispatch_get_main_queue(), {
@@ -51,8 +51,9 @@ class ViewController: UIViewController {
                 self.qualiumView.newQualia(qualia)
             })
         })
+        */
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
