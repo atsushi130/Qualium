@@ -87,6 +87,7 @@ class QualiumView: UIView {
         self.collectionView = UICollectionView(frame: rect, collectionViewLayout: self.layout)
         self.collectionView.delegate   = self
         self.collectionView.dataSource = self
+        self.collectionViewRect        = self.collectionView.frame
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.collectionView.registerNib(UINib(nibName: CellIdentifier, bundle: nil), forCellWithReuseIdentifier: CellIdentifier)
         self.addSubview(self.collectionView)
@@ -173,7 +174,8 @@ class QualiumView: UIView {
         let userInfo = notification.userInfo!
         let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
-        self.collectionViewRect = self.collectionView.frame
+        self.barView.transform = CGAffineTransformIdentity
+        self.collectionView.frame = self.collectionViewRect
         self.collectionView.addGestureRecognizer(self.gestureRecognizer)
         
         UIView.animateWithDuration(duration, animations: {
@@ -185,16 +187,17 @@ class QualiumView: UIView {
             
             }, completion: { (finished: Bool) -> Void in
                 let rect = self.collectionView.frame
-                self.collectionView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.width, self.collectionViewRect.height - keyboardRect.height)
+                self.collectionView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.width, self.collectionView.frame.height - keyboardRect.height)
+                
         })
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
         let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
+        self.collectionView.frame = self.collectionViewRect
         
         UIView.animateWithDuration(duration, animations: {
             self.barView.transform = CGAffineTransformIdentity
-            self.collectionView.frame = self.collectionViewRect
             }, completion: {(finished: Bool) -> Void in
                 self.collectionView.removeGestureRecognizer(self.gestureRecognizer)
         })
@@ -203,6 +206,7 @@ class QualiumView: UIView {
     @objc private func tappedWithKeyboardWillHide(sender: UIGestureRecognizer) {
         self.textView.resignFirstResponder()
     }
+    
 }
 
 extension QualiumView {
