@@ -120,7 +120,7 @@ class QualiumView: UIView {
         self.sendButton.backgroundColor = UIColor.clearColor()
         self.sendButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         self.sendButton.addTarget(self, action: #selector(QualiumView.qualiaSend(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        self.sendButton.setImage(UIImage(named: "airplane"), forState: UIControlState.Normal)
+        self.sendButton.setImage(UIImage(named: "airplane_tweak"), forState: UIControlState.Normal)
         self.barView.addSubview(self.sendButton)
     }
     
