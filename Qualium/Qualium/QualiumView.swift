@@ -53,7 +53,7 @@ class QualiumView: UIView {
     private var barView: UIView!
     private var textView: UITextView!
     private var sendButton: UIButton!
-    private var gestureRecognizer = UIGestureRecognizer()
+    private var gestureRecognizer = UITapGestureRecognizer()
     
     private var layout    = UICollectionViewFlowLayout()
     private var qualias   = [Qualia]()
@@ -188,7 +188,6 @@ class QualiumView: UIView {
             }, completion: { (finished: Bool) -> Void in
                 let rect = self.collectionView.frame
                 self.collectionView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.width, self.collectionView.frame.height - keyboardRect.height)
-                
         })
     }
     
