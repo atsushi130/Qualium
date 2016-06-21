@@ -21,54 +21,29 @@ enum QualiaTypes {
     case Image
 }
 
-protocol Qualia {
-    var vector: QualiaVactor { get set }
+protocol QualiaObject {
     var type: QualiaTypes { get set }
-    var ID: String! { get set }
-    init(vector: QualiaVactor)
+    var ID: (user: String!, qualia: String!) { get set }
+    init(ID: (user: String!, qualia: String!))
+    func vector(ID: String) -> QualiaVactor
 }
 
-protocol QualiaMessage: Qualia {
+extension QualiaObject {
+    final func vector(ID: String) -> QualiaVactor {
+        return ID == self.ID.user ? .Peer : .Me
+    }
+}
+
+protocol QualiaMessage: QualiaObject {
     var message: String! { get set }
 }
 
-extension QualiaMessage {
-    var type: QualiaTypes {
-        get { return .Message }
-        set {}
-    }
-}
-
-class MyQualia: NSObject, QualiaMessage {
-    var vector: QualiaVactor = .Me
-    var ID: String!
-    var message: String!
-    
-    required init(vector: QualiaVactor) {
-        super.init()
-    }
-    
-}
-
-protocol QualiaMovie: Qualia {
+protocol QualiaMovie: QualiaObject {
     var movie: NSData { get set }
 }
 
-extension QualiaMovie {
-    var type: QualiaTypes {
-        get { return .Movie }
-        set {}
-    }
-}
-
-protocol QualiaImage: Qualia {
+protocol QualiaImage: QualiaObject {
     var image: UIImage { get set }
-}
-
-extension QualiaImage {
-    var type: QualiaTypes {
-        get { return .Image }
-    }
 }
 
 class Choice: NSObject {
@@ -84,13 +59,22 @@ class Choice: NSObject {
     }
 }
 
-protocol QualiaQuestion: Qualia {
+protocol QualiaQuestion: QualiaObject {
     var choices: [Choice] { get set }
 }
 
-extension QualiaQuestion {
-    var type: QualiaTypes {
-        get { return .Question }
-        set {}
+class Qualia: NSObject, QualiaObject {
+    
+    var ID: (user: String!, qualia: String!) = ("", "")
+    var type: QualiaTypes = .Message
+    
+    override init() {
+        super.init()
     }
+    
+    required init(ID: (user: String!, qualia: String!)) {
+        super.init()
+        self.ID = ID
+    }
+    
 }
