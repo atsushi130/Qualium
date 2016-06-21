@@ -270,12 +270,28 @@ extension QualiumView: UICollectionViewDataSource {
 extension QualiumView: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        let dummyTextView  = UITextView()
-        dummyTextView.font = UIFont(name: Font, size: 15.0)
-        dummyTextView.text = (self.qualias[indexPath.row] as! Message).message
-        let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
-
-        return CGSizeMake(self.frame.width, size.height + Margin.Height)
+        let qualia = self.qualias[indexPath.row]
+        switch qualia.type {
+        case .Message:
+            let dummyTextView  = UITextView()
+            dummyTextView.font = UIFont(name: Font, size: 15.0)
+            dummyTextView.text = (self.qualias[indexPath.row] as! Message).message
+            let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
+            return CGSizeMake(self.frame.width, size.height + Margin.Height)
+            
+        case .Image:
+            return CGSizeMake(ImageSize.Width, ImageSize.Height)
+            
+        case .Question:
+            let dummyTextView  = UITextView()
+            dummyTextView.font = UIFont(name: Font, size: 15.0)
+            dummyTextView.text = (self.qualias[indexPath.row] as! Question).question
+            let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
+            return CGSizeMake(self.frame.size.width * 0.8, size.height + 45/*leftのheght*/ + 5/*headerとleftのmargin*/ + 10/*headerとtextViewのサイズ差*/)
+            
+        case .Movie:
+            return CGSizeZero
+        }
     }
 }
 

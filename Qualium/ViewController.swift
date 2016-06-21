@@ -41,17 +41,19 @@ class ViewController: UIViewController {
         
         self.qualiumView.syncQualias(self.qualias)
         
-        /*
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             NSThread.sleepForTimeInterval(3)
             dispatch_async(dispatch_get_main_queue(), {
-                let qualia = Message(ID: ("PEER", NSUUID().UUIDString))
-                qualia.message = "new qualia"
+                
+                let qualia = Question(ID: ("PEER", NSUUID().UUIDString))//Message(ID: ("PEER", NSUUID().UUIDString))
+                qualia.question = "Did you resolve this trouble ?"
+                qualia.type = .Question
                 self.qualias.append(qualia)
                 self.qualiumView.newQualia(qualia)
             })
         })
-        */
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,10 +88,23 @@ extension ViewController: QualiumViewDataSource {
     func qualiumView(qualiumView: QualiumView, cellForQualiaAtIndexPath indexPath: NSIndexPath) -> QualiaCell {
         let cell = qualiumView.dequeueReusableCell(indexPath: indexPath)
         
-        let qualia = self.qualias[indexPath.row] as! Message
-        cell.qualia = qualia
-        cell.text   = qualia.message
+        let qualia = self.qualias[indexPath.row]
+        cell.qualia = qualia.;
+        
         cell.icon.image = UIImage(named: "icon_0")
+        switch qualia.type {
+        case .Message:
+            cell.text = (qualia as! Message).message
+            
+        case .Image:
+            cell.image = (qualia as! Image).image
+            
+        case .Question:
+            cell.question = (qualia as! Question).question
+            
+            break
+        case .Movie: break
+        }
         
         return cell
     }
@@ -98,4 +113,12 @@ extension ViewController: QualiumViewDataSource {
 
 class Message: Qualia, QualiaMessage {
     var message: String! = ""
+}.;
+
+class Image: Qualia, QualiaImage {
+    var image: UIImage = UIImage()
+}
+
+class Question: Qualia, QualiaQuestion {
+    var question: String = ""
 }
