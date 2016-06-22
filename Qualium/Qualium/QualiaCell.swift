@@ -21,8 +21,8 @@ struct Margin {
 }
 
 struct ImageSize {
-    static let Width: CGFloat  = 100.0
-    static let Height: CGFloat = 150.0
+    static let Width: CGFloat  = 300.0
+    static let Height: CGFloat = 350.0
 }
 
 private struct QuestionViewPositon {
@@ -207,8 +207,8 @@ class QualiaCell: UICollectionViewCell {
             case .Image:
                 self.imageViewSetup()
                 let width = self.imageView.frame.size.width
-                let x     = self.frame.size.width - width
-                self.view.frame = CGRectMake(x, 0, width, self.view.frame.size.height)
+                let x     = self.frame.size.width - margin - width
+                self.view.frame = CGRectMake(x, 0, width, self.imageView.frame.size.height)
                 self.view.backgroundColor = UIColor.clearColor()
                 
             case .Question:

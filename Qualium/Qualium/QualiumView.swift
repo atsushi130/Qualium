@@ -282,7 +282,7 @@ extension QualiumView: UICollectionViewDelegateFlowLayout {
             return CGSizeMake(self.frame.width, size.height + TextViewMargin.Height)
             
         case .Image:
-            return CGSizeMake(ImageSize.Width, ImageSize.Height)
+            return CGSizeMake(self.frame.size.width, ImageSize.Height + 10)
             
         case .Question:
             let dummyTextView  = UITextView()

@@ -44,12 +44,21 @@ class ViewController: UIViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             NSThread.sleepForTimeInterval(3)
             dispatch_async(dispatch_get_main_queue(), {
-                
+
+                /*
+                let image = Image(ID: ("PEER", NSUUID().UUIDString))
+                image.image = UIImage(named: "icon_0")!
+                image.type = .Image
+                self.qualias.append(image)
+                self.qualiumView.newQualia(image)
+                */
+                /*
                 let question = Question(ID: (UserID, NSUUID().UUIDString))//Message(ID: ("PEER", NSUUID().UUIDString))
                 question.question = "Did you resolve this trouble ?"
                 question.type = .Question
                 self.qualias.append(question)
                 self.qualiumView.newQualia(question)
+                */
             })
         })
         
