@@ -35,14 +35,14 @@ private struct kSendButton {
     static let Height: CGFloat = kTextViewHeight - 15
 }
 
-private struct Margin {
+private struct TextViewMargin {
     static let Left: CGFloat   = 5.0
     static let Right: CGFloat  = 5.0
     static let Top: CGFloat    = 7.5
     static let Bottom: CGFloat = 7.5
     
-    static let Width: CGFloat  = Margin.Left + Margin.Right
-    static let Height: CGFloat = Margin.Top + Margin.Bottom
+    static let Width: CGFloat  = TextViewMargin.Left + TextViewMargin.Right
+    static let Height: CGFloat = TextViewMargin.Top + TextViewMargin.Bottom
 }
 
 internal let CellIdentifier = "QualiaCell"
@@ -106,8 +106,8 @@ class QualiumView: UIView {
     }
     
     private func textViewSetup() {
-        let width     = self.barView.frame.size.width - kSendButton.Width - Margin.Width - Margin.Left
-        self.textView = UITextView(frame: CGRectMake(Margin.Left, Margin.Top, width, kTextViewHeight))
+        let width     = self.barView.frame.size.width - kSendButton.Width - TextViewMargin.Width - TextViewMargin.Left
+        self.textView = UITextView(frame: CGRectMake(TextViewMargin.Left, TextViewMargin.Top, width, kTextViewHeight))
         self.textView.layer.cornerRadius  = kCornerRadius
         self.textView.layer.masksToBounds = true
         self.textView.font = UIFont(name: Font, size: 18)
@@ -115,8 +115,8 @@ class QualiumView: UIView {
     }
     
     private func sendButtonSetup() {
-        let x           = Margin.Left + self.textView.frame.size.width + Margin.Left
-        self.sendButton = UIButton(frame: CGRectMake(x, Margin.Top + 8.25, kSendButton.Width, kSendButton.Height))
+        let x           = TextViewMargin.Left + self.textView.frame.size.width + TextViewMargin.Left
+        self.sendButton = UIButton(frame: CGRectMake(x, TextViewMargin.Top + 8.25, kSendButton.Width, kSendButton.Height))
         self.sendButton.backgroundColor = UIColor.clearColor()
         self.sendButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         self.sendButton.addTarget(self, action: #selector(QualiumView.qualiaSend(_:)), forControlEvents: UIControlEvents.TouchUpInside)
@@ -216,6 +216,7 @@ extension QualiumView {
     
     func newQualia(qualia: Qualia) {
         self.qualias.append(qualia)
+        
         self.reloadData {
             // implement function call in time of completed reloadData
             self.collectionViewScrollToBottomAnimated(animated: true)
@@ -262,6 +263,7 @@ extension QualiumView: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = self.dataSource.qualiumView(self, cellForQualiaAtIndexPath: indexPath)
         self.cellSizes.append(cell.cellSize)
+        
         return cell
     }
     
@@ -270,12 +272,28 @@ extension QualiumView: UICollectionViewDataSource {
 extension QualiumView: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        let dummyTextView  = UITextView()
-        dummyTextView.font = UIFont(name: Font, size: 15.0)
-        dummyTextView.text = (self.qualias[indexPath.row] as! Message).message
-        let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
-
-        return CGSizeMake(self.frame.width, size.height + Margin.Height)
+        let qualia = self.qualias[indexPath.row]
+        switch qualia.type {
+        case .Message:
+            let dummyTextView  = UITextView()
+            dummyTextView.font = UIFont(name: Font, size: 15.0)
+            dummyTextView.text = (self.qualias[indexPath.row] as! Message).message
+            let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
+            return CGSizeMake(self.frame.width, size.height + TextViewMargin.Height)
+            
+        case .Image:
+            return CGSizeMake(self.frame.size.width, ImageSize.Height + 10)
+            
+        case .Question:
+            let dummyTextView  = UITextView()
+            dummyTextView.font = UIFont(name: Font, size: 15.0)
+            dummyTextView.text = (self.qualias[indexPath.row] as! Question).question
+            let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
+            return CGSizeMake(self.frame.size.width, size.height + Margin.Between + QuestionViewSize.LeftHeight + 10/*headerとtextViewのサイズ差*/)
+            
+        case .Movie:
+            return CGSizeZero
+        }
     }
 }
 

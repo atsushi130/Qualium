@@ -41,17 +41,27 @@ class ViewController: UIViewController {
         
         self.qualiumView.syncQualias(self.qualias)
         
-        /*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             NSThread.sleepForTimeInterval(3)
             dispatch_async(dispatch_get_main_queue(), {
-                let qualia = Message(ID: ("PEER", NSUUID().UUIDString))
-                qualia.message = "new qualia"
-                self.qualias.append(qualia)
-                self.qualiumView.newQualia(qualia)
+
+                /*
+                let image = Image(ID: ("PEER", NSUUID().UUIDString))
+                image.image = UIImage(named: "icon_0")!
+                image.type = .Image
+                self.qualias.append(image)
+                self.qualiumView.newQualia(image)
+                */
+                /*
+                let question = Question(ID: (UserID, NSUUID().UUIDString))//Message(ID: ("PEER", NSUUID().UUIDString))
+                question.question = "Did you resolve this trouble ?"
+                question.type = .Question
+                self.qualias.append(question)
+                self.qualiumView.newQualia(question)
+                */
             })
         })
-        */
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,10 +96,24 @@ extension ViewController: QualiumViewDataSource {
     func qualiumView(qualiumView: QualiumView, cellForQualiaAtIndexPath indexPath: NSIndexPath) -> QualiaCell {
         let cell = qualiumView.dequeueReusableCell(indexPath: indexPath)
         
-        let qualia = self.qualias[indexPath.row] as! Message
+        let qualia = self.qualias[indexPath.row]
         cell.qualia = qualia
-        cell.text   = qualia.message
+        
         cell.icon.image = UIImage(named: "icon_0")
+        switch qualia.type {
+        case .Message:
+            cell.text = (qualia as! Message).message
+            
+        case .Image:
+            cell.image = (qualia as! Image).image
+            
+        case .Question:
+            
+            cell.question = (qualia as! Question).question
+            
+            break
+        case .Movie: break
+        }
         
         return cell
     }
@@ -98,4 +122,12 @@ extension ViewController: QualiumViewDataSource {
 
 class Message: Qualia, QualiaMessage {
     var message: String! = ""
+}
+
+class Image: Qualia, QualiaImage {
+    var image: UIImage = UIImage()
+}
+
+class Question: Qualia, QualiaQuestion {
+    var question: String = ""
 }

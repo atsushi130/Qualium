@@ -1,4 +1,4 @@
-//
+ //
 //  Qualia.swift
 //  Qualium
 //
@@ -37,13 +37,31 @@ extension QualiaObject {
 protocol QualiaMessage: QualiaObject {
     var message: String! { get set }
 }
+ 
+extension QualiaMessage {
+    var type: QualiaTypes {
+        return .Message
+    }
+}
 
 protocol QualiaMovie: QualiaObject {
     var movie: NSData { get set }
 }
+ 
+extension QualiaMovie {
+    var type: QualiaTypes {
+        return .Movie
+    }
+}
 
 protocol QualiaImage: QualiaObject {
     var image: UIImage { get set }
+}
+ 
+extension QualiaImage {
+    var type: QualiaTypes {
+        return .Image
+    }
 }
 
 class Choice: NSObject {
@@ -60,7 +78,13 @@ class Choice: NSObject {
 }
 
 protocol QualiaQuestion: QualiaObject {
-    var choices: [Choice] { get set }
+    var question: String { get set }
+}
+ 
+extension QualiaQuestion {
+    var type: QualiaTypes {
+        return .Question
+    }
 }
 
 class Qualia: NSObject, QualiaObject {
