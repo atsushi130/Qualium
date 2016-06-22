@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-private struct Margin {
+struct Margin {
     static let Left: CGFloat    = 5.0
     static let Right: CGFloat   = 5.0
     static let Top: CGFloat     = 0.0
@@ -31,10 +31,10 @@ private struct QuestionViewPositon {
     static let Right  = 2
 }
 
-private struct QuestionViewSize {
+struct QuestionViewSize {
     static let HeaderHeight: CGFloat = 30.0
-    static let LeftHeight: CGFloat   = 45.0
-    static let RightHeight: CGFloat  = 45.0
+    static let LeftHeight: CGFloat   = 50.0
+    static let RightHeight: CGFloat  = 50.0
     
     static let QuestionViewHeight: CGFloat = QuestionViewSize.HeaderHeight + Margin.Between + QuestionViewSize.LeftHeight
 }
@@ -60,7 +60,7 @@ class QualiaCell: UICollectionViewCell {
     
     var text: String {
         get {
-            return self.text
+            return self.text // return self.textView.text
         }
         set {
             self.textView.text = newValue
@@ -80,10 +80,11 @@ class QualiaCell: UICollectionViewCell {
     
     var question: String {
         get {
-            //return self.question
-            return "Did you resove this trouble ?"
+            return self.textView.text
         }
         set {
+            self.textView.text = newValue
+            self.sizeFit()
         }
     }
     
@@ -138,9 +139,10 @@ class QualiaCell: UICollectionViewCell {
             self.view.addSubview($0)
         }
         
+        //|Margin.Left|header|Margin.Right| = |header|Margin.Width|
         let headerRect = CGRectMake(0, 0, self.frame.size.width * 0.8 + Margin.Width, self.textView.frame.size.height + Margin.Height)
         self.questionView[QuestionViewPositon.Header].frame = headerRect
-        let rect = CGRectMake(0, headerRect.size.height + Margin.Between, ((self.frame.size.width * 0.8) - Margin.Between) * 0.5, QuestionViewSize.LeftHeight)
+        let rect = CGRectMake(0, headerRect.size.height + Margin.Between, ((self.frame.size.width * 0.8) + Margin.Between) * 0.5, QuestionViewSize.LeftHeight)
         self.questionView[QuestionViewPositon.Left].frame   = CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height)
         self.questionView[QuestionViewPositon.Right].frame  = CGRectMake(rect.size.width + Margin.Between, rect.origin.y, rect.size.width, rect.size.height)
     }
@@ -180,8 +182,13 @@ class QualiaCell: UICollectionViewCell {
             case .Question:
                 self.textViewSetup(self.questionView[QuestionViewPositon.Header])
                 self.questionViewSetup()
-                self.view.frame = CGRectMake(margin, 0, self.questionView[QuestionViewPositon.Header].frame.size.width, QuestionViewSize.QuestionViewHeight)
+                let headerRect  = self.questionView[QuestionViewPositon.Header].frame
+                self.view.frame = CGRectMake(margin, 0, headerRect.size.width, headerRect.size.height + Margin.Between + QuestionViewSize.LeftHeight)
+                print(self.view.frame)
                 self.view.backgroundColor = UIColor.clearColor()
+                self.questionView[QuestionViewPositon.Header].backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
+                self.questionView[QuestionViewPositon.Left].backgroundColor   = UIColor.whiteColor()
+                self.questionView[QuestionViewPositon.Right].backgroundColor  = UIColor.whiteColor()
                 
             case .Movie: break
                 
@@ -208,9 +215,12 @@ class QualiaCell: UICollectionViewCell {
                 self.textViewSetup(self.questionView[QuestionViewPositon.Header])
                 self.questionViewSetup()
                 let width = self.questionView[QuestionViewPositon.Header].frame.size.width
-                let x     = self.frame.size.width - width
+                let x     = self.frame.size.width - margin - width
                 self.view.frame = CGRectMake(x, 0, width, QuestionViewSize.QuestionViewHeight)
                 self.view.backgroundColor = UIColor.clearColor()
+                self.questionView[QuestionViewPositon.Header].backgroundColor = UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1.0)
+                self.questionView[QuestionViewPositon.Left].backgroundColor   = UIColor.whiteColor()
+                self.questionView[QuestionViewPositon.Right].backgroundColor  = UIColor.whiteColor()
                 
             case .Movie: break
             }

@@ -41,16 +41,15 @@ class ViewController: UIViewController {
         
         self.qualiumView.syncQualias(self.qualias)
         
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             NSThread.sleepForTimeInterval(3)
             dispatch_async(dispatch_get_main_queue(), {
                 
-                let qualia = Question(ID: ("PEER", NSUUID().UUIDString))//Message(ID: ("PEER", NSUUID().UUIDString))
-                qualia.question = "Did you resolve this trouble ?"
-                qualia.type = .Question
-                self.qualias.append(qualia)
-                self.qualiumView.newQualia(qualia)
+                let question = Question(ID: (UserID, NSUUID().UUIDString))//Message(ID: ("PEER", NSUUID().UUIDString))
+                question.question = "Did you resolve this trouble ?"
+                question.type = .Question
+                self.qualias.append(question)
+                self.qualiumView.newQualia(question)
             })
         })
         
@@ -89,7 +88,7 @@ extension ViewController: QualiumViewDataSource {
         let cell = qualiumView.dequeueReusableCell(indexPath: indexPath)
         
         let qualia = self.qualias[indexPath.row]
-        cell.qualia = qualia.;
+        cell.qualia = qualia
         
         cell.icon.image = UIImage(named: "icon_0")
         switch qualia.type {
@@ -100,6 +99,7 @@ extension ViewController: QualiumViewDataSource {
             cell.image = (qualia as! Image).image
             
         case .Question:
+            
             cell.question = (qualia as! Question).question
             
             break
@@ -113,7 +113,7 @@ extension ViewController: QualiumViewDataSource {
 
 class Message: Qualia, QualiaMessage {
     var message: String! = ""
-}.;
+}
 
 class Image: Qualia, QualiaImage {
     var image: UIImage = UIImage()
