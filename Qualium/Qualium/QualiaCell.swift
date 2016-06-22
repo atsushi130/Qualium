@@ -143,14 +143,38 @@ class QualiaCell: UICollectionViewCell {
         let headerRect = CGRectMake(0, 0, self.frame.size.width * 0.8 + Margin.Width, self.textView.frame.size.height + Margin.Height)
         self.questionView[QuestionViewPositon.Header].frame = headerRect
         let rect = CGRectMake(0, headerRect.size.height + Margin.Between, ((self.frame.size.width * 0.8) + Margin.Between) * 0.5, QuestionViewSize.LeftHeight)
-        self.questionView[QuestionViewPositon.Left].frame   = CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height)
-        self.questionView[QuestionViewPositon.Right].frame  = CGRectMake(rect.size.width + Margin.Between, rect.origin.y, rect.size.width, rect.size.height)
+        
+        let left       = self.questionView[QuestionViewPositon.Left]
+        left.frame     = CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height)
+        let leftButton = UIButton(frame: CGRectMake(0, 0, left.frame.size.width, left.frame.size.height))
+        leftButton.tag = 0
+        leftButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        leftButton.setTitle("YES", forState: UIControlState.Normal)
+        leftButton.addTarget(self, action: #selector(QualiaCell.selectedAnswer(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        left.addSubview(leftButton)
+        
+        let right       = self.questionView[QuestionViewPositon.Right]
+        right.frame     = CGRectMake(rect.size.width + Margin.Between, rect.origin.y, rect.size.width, rect.size.height)
+        let rightButton = UIButton(frame: CGRectMake(0, 0, right.frame.size.width, right.frame.size.height))
+        rightButton.tag = 1
+        rightButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        rightButton.setTitle("NO", forState: UIControlState.Normal)
+        rightButton.addTarget(self, action: #selector(QualiaCell.selectedAnswer(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        right.addSubview(rightButton)
     }
     
     private func iconSetup() {
         self.addSubview(self.icon)
         self.icon.layer.cornerRadius  = kIconCornerRadius
         self.icon.layer.masksToBounds = true
+    }
+    
+    @objc private func selectedAnswer(sender: UIButton) {
+        if sender.tag == 0 {
+            print("YES")
+        } else if sender.tag == 1 {
+            print("NO")
+        }
     }
 
     private func sizeFit() {
