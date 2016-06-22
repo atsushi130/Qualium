@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         self.qualiumView.syncQualias(self.qualias)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            NSThread.sleepForTimeInterval(3)
+            NSThread.sleepForTimeInterval(1)
             dispatch_async(dispatch_get_main_queue(), {
 
                  /*
@@ -57,6 +57,29 @@ class ViewController: UIViewController {
                 question.type = .Question
                 self.qualias.append(question)
                 self.qualiumView.newQualia(question)
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                    NSThread.sleepForTimeInterval(1)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        let image = Image(ID: ("PEER", NSUUID().UUIDString))
+                        image.image = UIImage(named: "icon_0")!
+                        image.type = .Image
+                        self.qualias.append(image)
+                        self.qualiumView.newQualia(image)
+                     
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                            NSThread.sleepForTimeInterval(1)
+                            dispatch_async(dispatch_get_main_queue(), {
+                                
+                                let qualia = Message(ID: (UserID, NSUUID().UUIDString))
+                                qualia.message = "I'm looking for Tokyo Station"
+                                self.qualias.append(qualia)
+                                self.qualiumView.newQualia(qualia)
+                            })
+                        })
+                    })
+                })
             })
         })
         
