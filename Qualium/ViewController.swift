@@ -13,6 +13,14 @@ let TestTexts = ["The Dance of Eternity\nMetropolis part 2", "Bridges In the Sky
 
 let NavigationBarHeight: CGFloat = 64.0
 
+struct CellIdentifier {
+    static let Message  = "QualiaMessageCell"
+    static let Image    = "QualiaImageCell"
+    static let Question = "QualiaQuestionCell"
+    static let Location = "QualiaLocationCell"
+    static let Movie    = "QualiaMovieCell"
+}
+
 class ViewController: UIViewController {
 
     var qualiumView: QualiumView!
@@ -115,28 +123,36 @@ extension ViewController: QualiumViewDataSource {
     }
     
     func qualiumView(qualiumView: QualiumView, cellForQualiaAtIndexPath indexPath: NSIndexPath) -> QualiaCell {
-        let cell = qualiumView.dequeueReusableCell(indexPath: indexPath)
         
         let qualia = self.qualias[indexPath.row]
-        cell.qualia = qualia
         
-        cell.icon.image = UIImage(named: "icon_0")
         switch qualia.type {
         case .Message:
-            cell.text = (qualia as! Message).message
+            let cell        = qualiumView.dequeueReusableCellWithReuseIdentifier(CellIdentifier.Message, indexPath: indexPath) as! QualiaMessageCell
+            cell.qualia     = qualia
+            cell.icon.image = UIImage(named: "icon_0")
+            cell.text       = (qualia as! Message).message
+            return cell
             
         case .Image:
-            cell.image = (qualia as! Image).image
+            let cell        = qualiumView.dequeueReusableCellWithReuseIdentifier(CellIdentifier.Image, indexPath: indexPath) as! QualiaImageCell
+            cell.qualia     = qualia
+            cell.icon.image = UIImage(named: "icon_0")
+            cell.image      = (qualia as! Image).image
+            return cell
             
         case .Question:
+            let cell        = qualiumView.dequeueReusableCellWithReuseIdentifier(CellIdentifier.Question, indexPath: indexPath) as! QualiaQuestionCell
+            cell.qualia     = qualia
+            cell.icon.image = UIImage(named: "icon_0")
+            cell.question   = (qualia as! Question).question
+            return cell
             
-            cell.question = (qualia as! Question).question
-            
-            break
         case .Movie: break
+            
         }
         
-        return cell
+        return QualiaCell()
     }
     
 }

@@ -28,7 +28,7 @@ private let kTextViewHeight: CGFloat   = 35.0
 
 private let kCornerRadius: CGFloat = 5.0
 
-private let Font = "HelveticaNeue-Thin"
+let Font = "HelveticaNeue-Thin"
 
 private struct kSendButton {
     static let Width: CGFloat  = 30.0
@@ -45,7 +45,7 @@ private struct TextViewMargin {
     static let Height: CGFloat = TextViewMargin.Top + TextViewMargin.Bottom
 }
 
-internal let CellIdentifier = "QualiaCell"
+//internal let CellIdentifier = "QualiaCell"
 
 class QualiumView: UIView {
     
@@ -89,7 +89,11 @@ class QualiumView: UIView {
         self.collectionView.dataSource = self
         self.collectionViewRect        = self.collectionView.frame
         self.collectionView.backgroundColor = UIColor.clearColor()
-        self.collectionView.registerNib(UINib(nibName: CellIdentifier, bundle: nil), forCellWithReuseIdentifier: CellIdentifier)
+        self.collectionView.registerNib(UINib(nibName: CellIdentifier.Message, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.Message)
+        self.collectionView.registerNib(UINib(nibName: CellIdentifier.Image, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.Image)
+        self.collectionView.registerNib(UINib(nibName: CellIdentifier.Question, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.Question)
+        self.collectionView.registerNib(UINib(nibName: CellIdentifier.Location, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.Location)
+        self.collectionView.registerNib(UINib(nibName: CellIdentifier.Movie, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.Movie)
         self.addSubview(self.collectionView)
     }
     
@@ -236,8 +240,8 @@ extension QualiumView {
         }
     }
     
-    func dequeueReusableCell(indexPath indexPath: NSIndexPath) -> QualiaCell {
-        return self.collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! QualiaCell
+    func dequeueReusableCellWithReuseIdentifier(identifier: String, indexPath: NSIndexPath) -> QualiaCell {
+        return self.collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! QualiaCell
     }
     
 }
@@ -261,7 +265,9 @@ extension QualiumView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = self.dataSource.qualiumView(self, cellForQualiaAtIndexPath: indexPath)
+        
         self.cellSizes.append(cell.cellSize)
         
         return cell

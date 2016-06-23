@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D096A731D1C2CC4005AA5A6 /* QualiaMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D096A721D1C2CC4005AA5A6 /* QualiaMessageCell.xib */; };
+		0D096A751D1C2CD3005AA5A6 /* QualiaImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D096A741D1C2CD3005AA5A6 /* QualiaImageCell.xib */; };
+		0D096A771D1C2CE9005AA5A6 /* QualiaQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D096A761D1C2CE9005AA5A6 /* QualiaQuestionCell.xib */; };
+		0D096A791D1C2CF9005AA5A6 /* QualiaLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D096A781D1C2CF9005AA5A6 /* QualiaLocationCell.xib */; };
+		0D096A7B1D1C2D7D005AA5A6 /* QualiaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D096A7A1D1C2D7D005AA5A6 /* QualiaMessageCell.swift */; };
+		0D096A7E1D1C2D8F005AA5A6 /* QualiaImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D096A7D1D1C2D8F005AA5A6 /* QualiaImageCell.swift */; };
+		0D096A801D1C2DA2005AA5A6 /* QualiaQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D096A7F1D1C2DA2005AA5A6 /* QualiaQuestionCell.swift */; };
+		0D096A821D1C2DB2005AA5A6 /* QualiaLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D096A811D1C2DB2005AA5A6 /* QualiaLocationCell.swift */; };
 		0D3DFCC51D0EDEEE009F0CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCC41D0EDEEE009F0CB9 /* AppDelegate.swift */; };
 		0D3DFCC71D0EDEEE009F0CB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DFCC61D0EDEEE009F0CB9 /* ViewController.swift */; };
 		0D3DFCCA1D0EDEEE009F0CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D3DFCC81D0EDEEE009F0CB9 /* Main.storyboard */; };
@@ -39,6 +47,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D096A721D1C2CC4005AA5A6 /* QualiaMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QualiaMessageCell.xib; path = Qualium/QualiaMessageCell.xib; sourceTree = "<group>"; };
+		0D096A741D1C2CD3005AA5A6 /* QualiaImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QualiaImageCell.xib; path = Qualium/QualiaImageCell.xib; sourceTree = "<group>"; };
+		0D096A761D1C2CE9005AA5A6 /* QualiaQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QualiaQuestionCell.xib; path = Qualium/QualiaQuestionCell.xib; sourceTree = "<group>"; };
+		0D096A781D1C2CF9005AA5A6 /* QualiaLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QualiaLocationCell.xib; path = Qualium/QualiaLocationCell.xib; sourceTree = "<group>"; };
+		0D096A7A1D1C2D7D005AA5A6 /* QualiaMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiaMessageCell.swift; path = Qualium/QualiaMessageCell.swift; sourceTree = "<group>"; };
+		0D096A7D1D1C2D8F005AA5A6 /* QualiaImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiaImageCell.swift; path = Qualium/QualiaImageCell.swift; sourceTree = "<group>"; };
+		0D096A7F1D1C2DA2005AA5A6 /* QualiaQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiaQuestionCell.swift; path = Qualium/QualiaQuestionCell.swift; sourceTree = "<group>"; };
+		0D096A811D1C2DB2005AA5A6 /* QualiaLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QualiaLocationCell.swift; path = Qualium/QualiaLocationCell.swift; sourceTree = "<group>"; };
 		0D3DFCC11D0EDEED009F0CB9 /* Qualium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qualium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D3DFCC41D0EDEEE009F0CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D3DFCC61D0EDEEE009F0CB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,11 +155,19 @@
 		0D3DFCF21D0EDEF9009F0CB9 /* Qualium */ = {
 			isa = PBXGroup;
 			children = (
+				0D3DFCFB1D11A5DC009F0CB9 /* Operator.swift */,
 				0D3DFCF31D0EE013009F0CB9 /* Qualia.swift */,
 				0D3DFCF51D0EF606009F0CB9 /* QualiumView.swift */,
 				0D3DFCF71D0EF7F9009F0CB9 /* QualiaCell.swift */,
+				0D096A7A1D1C2D7D005AA5A6 /* QualiaMessageCell.swift */,
+				0D096A7D1D1C2D8F005AA5A6 /* QualiaImageCell.swift */,
+				0D096A7F1D1C2DA2005AA5A6 /* QualiaQuestionCell.swift */,
+				0D096A811D1C2DB2005AA5A6 /* QualiaLocationCell.swift */,
 				0D3DFCF91D103C0E009F0CB9 /* QualiaCell.xib */,
-				0D3DFCFB1D11A5DC009F0CB9 /* Operator.swift */,
+				0D096A721D1C2CC4005AA5A6 /* QualiaMessageCell.xib */,
+				0D096A741D1C2CD3005AA5A6 /* QualiaImageCell.xib */,
+				0D096A761D1C2CE9005AA5A6 /* QualiaQuestionCell.xib */,
+				0D096A781D1C2CF9005AA5A6 /* QualiaLocationCell.xib */,
 			);
 			name = Qualium;
 			sourceTree = "<group>";
@@ -252,8 +276,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D096A751D1C2CD3005AA5A6 /* QualiaImageCell.xib in Resources */,
+				0D096A731D1C2CC4005AA5A6 /* QualiaMessageCell.xib in Resources */,
+				0D096A771D1C2CE9005AA5A6 /* QualiaQuestionCell.xib in Resources */,
 				0D3DFCFA1D103C0E009F0CB9 /* QualiaCell.xib in Resources */,
 				0D3DFCCF1D0EDEEE009F0CB9 /* LaunchScreen.storyboard in Resources */,
+				0D096A791D1C2CF9005AA5A6 /* QualiaLocationCell.xib in Resources */,
 				0D3DFCCC1D0EDEEE009F0CB9 /* Assets.xcassets in Resources */,
 				0D3DFCCA1D0EDEEE009F0CB9 /* Main.storyboard in Resources */,
 			);
@@ -280,10 +308,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D096A7E1D1C2D8F005AA5A6 /* QualiaImageCell.swift in Sources */,
 				0D3DFCF81D0EF7F9009F0CB9 /* QualiaCell.swift in Sources */,
 				0D3DFCFC1D11A5DC009F0CB9 /* Operator.swift in Sources */,
+				0D096A801D1C2DA2005AA5A6 /* QualiaQuestionCell.swift in Sources */,
 				0D3DFCF41D0EE013009F0CB9 /* Qualia.swift in Sources */,
+				0D096A7B1D1C2D7D005AA5A6 /* QualiaMessageCell.swift in Sources */,
 				0D3DFCF61D0EF606009F0CB9 /* QualiumView.swift in Sources */,
+				0D096A821D1C2DB2005AA5A6 /* QualiaLocationCell.swift in Sources */,
 				0D3DFCC71D0EDEEE009F0CB9 /* ViewController.swift in Sources */,
 				0D3DFCC51D0EDEEE009F0CB9 /* AppDelegate.swift in Sources */,
 			);
