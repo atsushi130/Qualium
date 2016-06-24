@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 import UIKit
 
 enum QualiaVactor {
@@ -19,6 +20,7 @@ enum QualiaTypes {
     case Movie
     case Question
     case Image
+    case Location
 }
 
 protocol QualiaObject {
@@ -84,6 +86,16 @@ protocol QualiaQuestion: QualiaObject {
 extension QualiaQuestion {
     var type: QualiaTypes {
         return .Question
+    }
+}
+ 
+protocol QualiaLocation: QualiaObject {
+    var coordinate: CLLocationCoordinate2D { get set }
+}
+ 
+extension QualiaLocation {
+    var type: QualiaTypes {
+        return .Location
     }
 }
 
