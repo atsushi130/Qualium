@@ -17,6 +17,8 @@ class QualiaLocationCell: QualiaCell {
     // Width = Height
     var mapImageView        = UIImageView(frame: CGRectMake(Margin.Left, Margin.Left, MapImageSize.Width, MapImageSize.Height))
     var annotationImageView = UIImageView(frame: CGRectMake(10, -17.5, 37, 35))
+    var tappedLocationCellHandler: (() -> Void)?
+    let gestureRecognizer = UITapGestureRecognizer()
     
     var latitude: Double  = 0.0
     var longitude: Double = 0.0
@@ -33,11 +35,13 @@ class QualiaLocationCell: QualiaCell {
     
     private func mapImageViewSetup() {
         self.mapImageView.removeFromSuperview()
-        self.view.addSubview(self.mapImageView)
+        self.mapImageView.removeGestureRecognizer(self.gestureRecognizer)
         self.mapImageView.layer.cornerRadius  = kCornerRadius
         self.mapImageView.layer.masksToBounds = true
         self.mapImageView.clipsToBounds       = false
-        self.mapImageView.image = UIImage(named: "map2")
+        self.mapImageView.image               = UIImage(named: "map2")
+        self.gestureRecognizer.addTarget(self, action: #selector(QualiaLocationCell.tapped(_:)))
+        self.view.addSubview(self.mapImageView)
         self.annotationImageViewSetup()
     }
     
@@ -45,6 +49,10 @@ class QualiaLocationCell: QualiaCell {
         self.annotationImageView.removeFromSuperview()
         self.mapImageView.addSubview(self.annotationImageView)
         self.annotationImageView.image = UIImage(named: "annotation")
+    }
+    
+    @objc private func tapped(sender: UIGestureRecognizer) {
+        self.tappedLocationCellHandler?()
     }
     
     func sizeFit() {
