@@ -64,6 +64,12 @@ self.qualiumView.newQualia(qualia)
 
 Please refer to the sample code of ViewController for more information.
 
+## ToDo
+- Implement mutable input text view height.
+- To be able to change backgroundcolor of QualiaCell.
+- Corresponding to the QualiaMovie.
+- Create the input menu other than Message.
+
 ## Contact
 
 Atsushi Miyake
