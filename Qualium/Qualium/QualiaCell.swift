@@ -26,8 +26,8 @@ struct ImageSize {
 }
 
 struct MapImageSize {
-    static let Width: CGFloat  = 250.0
-    static let Height: CGFloat = 50.0
+    static let Width: CGFloat  = 200.0
+    static let Height: CGFloat = 70.0
 }
 
 let kIconDiameter: CGFloat     = 30.0

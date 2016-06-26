@@ -10,12 +10,13 @@ import Foundation
 import MapKit
 import UIKit
 
-private let kCornerRadius: CGFloat = 25.0
+private let kCornerRadius: CGFloat = 5.0
 
 class QualiaLocationCell: QualiaCell {
     
     // Width = Height
-    var mapImageView = UIImageView(frame: CGRectMake(Margin.Left, Margin.Left, MapImageSize.Height, MapImageSize.Height))
+    var mapImageView        = UIImageView(frame: CGRectMake(Margin.Left, Margin.Left, MapImageSize.Width, MapImageSize.Height))
+    var annotationImageView = UIImageView(frame: CGRectMake(10, -17.5, 37, 35))
     
     var latitude: Double  = 0.0
     var longitude: Double = 0.0
@@ -33,28 +34,17 @@ class QualiaLocationCell: QualiaCell {
     private func mapImageViewSetup() {
         self.mapImageView.removeFromSuperview()
         self.view.addSubview(self.mapImageView)
-        self.mapImageView.layer.cornerRadius = kCornerRadius
+        self.mapImageView.layer.cornerRadius  = kCornerRadius
         self.mapImageView.layer.masksToBounds = true
-        self.mapImageView.contentMode        = UIViewContentMode.ScaleAspectFit
-        self.mapImageView.image = UIImage(named: "mapImageView")
-        //self.mapSnapshot()
+        self.mapImageView.clipsToBounds       = false
+        self.mapImageView.image = UIImage(named: "map2")
+        self.annotationImageViewSetup()
     }
     
-    func mapSnapshot() {
-        
-        let center     = CLLocationCoordinate2D(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
-        let span       = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let options    = MKMapSnapshotOptions()
-        options.region = MKCoordinateRegion(center: center, span: span)
-        options.scale  = UIScreen.mainScreen().scale
-        options.size   = CGSize(width: MapImageSize.Width, height: MapImageSize.Height)
-        
-        MKMapSnapshotter(options: options).startWithCompletionHandler({ snapshot, error in
-            if let snapshot = snapshot {
-                self.mapImageView.image = snapshot.image
-            }
-        })
-        
+    private func annotationImageViewSetup() {
+        self.annotationImageView.removeFromSuperview()
+        self.mapImageView.addSubview(self.annotationImageView)
+        self.annotationImageView.image = UIImage(named: "annotation")
     }
     
     func sizeFit() {
@@ -65,21 +55,24 @@ class QualiaLocationCell: QualiaCell {
         case .Peer: self.icon.frame = CGRectMake(self.frame.size.width - Margin.Right - kIconDiameter, 0, kIconDiameter, kIconDiameter)
         }
         
+        self.clipsToBounds      = false
+        self.view.clipsToBounds = false
+        
         //view
         let margin = self.icon.frame.size.width + Margin.Width
         switch self.qualia.vector(UserID) {
         case .Me:
             self.mapImageViewSetup()
-            self.view.frame = CGRectMake(margin, 0, self.mapImageView.frame.size.width + Margin.Width, self.mapImageView.frame.size.height + Margin.Width)
-            self.view.layer.cornerRadius = kCornerRadius + Margin.Width/2
+            self.view.frame = CGRectMake(margin, 0, MapImageSize.Width + Margin.Width, self.mapImageView.frame.size.height + Margin.Width)
+            self.view.layer.cornerRadius = kCornerRadius
             self.view.backgroundColor    = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
             
         case .Peer:
             self.mapImageViewSetup()
-            let width       = MapImageSize.Width
+            let width       = MapImageSize.Width + Margin.Width
             let x           = self.frame.size.width - margin - width
-            self.view.frame = CGRectMake(x, 0, MapImageSize.Width, MapImageSize.Height + Margin.Width)
-            self.view.layer.cornerRadius   = kCornerRadius + Margin.Width/2
+            self.view.frame = CGRectMake(x, 0, width, MapImageSize.Height + Margin.Width)
+            self.view.layer.cornerRadius   = kCornerRadius
             self.view.backgroundColor      = UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1.0)
             
         }

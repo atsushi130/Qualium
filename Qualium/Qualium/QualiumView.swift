@@ -296,7 +296,7 @@ extension QualiumView: UICollectionViewDelegateFlowLayout {
             return CGSizeMake(self.frame.size.width, size.height + Margin.Between + QuestionViewSize.LeftHeight + 10/*headerとtextViewのサイズ差*/)
             
         case .Location:
-            return CGSizeMake(self.frame.size.width, MapImageSize.Height + 10)
+            return CGSizeMake(self.frame.size.width, MapImageSize.Height + Margin.Width + 10)// Height = 0なのでWidthで対応
             
         case .Movie:
             return CGSizeZero
