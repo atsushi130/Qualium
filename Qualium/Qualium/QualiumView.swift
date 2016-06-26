@@ -265,9 +265,7 @@ extension QualiumView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
         let cell = self.dataSource.qualiumView(self, cellForQualiaAtIndexPath: indexPath)
-        
         self.cellSizes.append(cell.cellSize)
         
         return cell
@@ -296,6 +294,9 @@ extension QualiumView: UICollectionViewDelegateFlowLayout {
             dummyTextView.text = (self.qualias[indexPath.row] as! Question).question
             let size = dummyTextView.sizeThatFits(CGSize(width: self.frame.size.width * 0.8, height: CGFloat.infinity))
             return CGSizeMake(self.frame.size.width, size.height + Margin.Between + QuestionViewSize.LeftHeight + 10/*headerとtextViewのサイズ差*/)
+            
+        case .Location:
+            return CGSizeMake(self.frame.size.width, MapImageSize.Height + Margin.Width + 10)// Height = 0なのでWidthで対応
             
         case .Movie:
             return CGSizeZero

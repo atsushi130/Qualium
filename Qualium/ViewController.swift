@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 let UserID = "ATUSHI_MIYAKE"
 let TestTexts = ["The Dance of Eternity\nMetropolis part 2", "Bridges In the Sky\nA Dramatic Turn Of Events", "Constant Motion\nSystematic Chaos", "Panic Attack\nOctavarium", "Octavarium", "Metropolis\nImages and Words", "Illmination Theory\nDream Theater", "Enigma Machine", "Hell's Kitchin\nFalling Into Infinity", "The Count of Tascany\nBlack Clouds & Silver Linings", "Cought In a Web\nAwake", "Moment Of Betrayal\nThe Astonshing", "Stream Of Consciousness", "Endless Sacrifice", "New Millennium", "Overture 1928", "Strange Deja vu"]
@@ -84,6 +85,17 @@ class ViewController: UIViewController {
                                 qualia.message = "I'm looking for Tokyo Station"
                                 self.qualias.append(qualia)
                                 self.qualiumView.newQualia(qualia)
+                                
+                                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                                    NSThread.sleepForTimeInterval(1)
+                                    dispatch_async(dispatch_get_main_queue(), {
+                                        
+                                        let qualia = Location(ID: (UserID, NSUUID().UUIDString))
+                                        qualia.type = .Location
+                                        self.qualias.append(qualia)
+                                        self.qualiumView.newQualia(qualia)
+                                    })
+                                })
                             })
                         })
                     })
@@ -148,6 +160,13 @@ extension ViewController: QualiumViewDataSource {
             cell.question   = (qualia as! Question).question
             return cell
             
+        case .Location:
+            let cell        = qualiumView.dequeueReusableCellWithReuseIdentifier(CellIdentifier.Location, indexPath: indexPath) as! QualiaLocationCell
+            cell.qualia     = qualia
+            cell.coordinate = (qualia as! Location).coordinate
+            cell.icon.image = UIImage(named: "icon_0")
+            return cell
+            
         case .Movie: break
             
         }
@@ -167,4 +186,8 @@ class Image: Qualia, QualiaImage {
 
 class Question: Qualia, QualiaQuestion {
     var question: String = ""
+}
+
+class Location: Qualia, QualiaLocation {
+    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(35.551451, 139.446551)
 }
