@@ -72,9 +72,7 @@ Please refer to the sample code of ViewController for more information.
 
 ## Contact
 
-Atsushi Miyake
-- https://twitter.com/tsushi130
-
+Atsushi Miyake  
 
 ## License (MIT)
 
